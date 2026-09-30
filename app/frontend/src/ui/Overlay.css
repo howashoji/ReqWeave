@@ -1,0 +1,53 @@
+/*
+ * 重ねて出す面（どの画面の型でも共通）。色・余白はトークン参照のみ・影は使わない。
+ *
+ * 土台は**通常の流れで高さを持たない**（下の作業領域を動かさない）。
+ */
+.rw-overlay-anchor {
+    position: relative;
+    height: 0;
+    flex: 0 0 auto;
+    z-index: 15;
+}
+
+/* 外側の面。popover は見た目を持たない（作業領域を覆い隠さない）。 */
+.rw-overlay__outside {
+    position: fixed;
+    inset: 0;
+}
+
+/* modal は背後を暗くし、操作させないことを見た目でも示す。 */
+.rw-overlay__outside--modal {
+    background: var(--rw-scrim);
+}
+
+.rw-overlay {
+    /* 既定は画面に固定して浮かせる（ペインの中で開いても枠に切られない）。 */
+    position: fixed;
+    top: 12vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(760px, calc(100vw - 2 * var(--rw-space-5)));
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-panel);
+    padding: var(--rw-space-3) var(--rw-space-4);
+    /*
+     * **必ず画面に収まる高さで頭打ちにする**（内容が増えても、ウィンドウが小さくても）。
+     * あふれる分はこの中で送る。
+     */
+    max-height: min(70vh, 640px);
+    overflow-y: auto;
+}
+
+/* 開く操作の真下に出す置き方（工程ガイドの全体像）。 */
+.rw-overlay-anchor[data-anchored='true'] .rw-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: auto;
+    max-width: 760px;
+    right: 0;
+    max-height: min(60vh, 560px);
+}

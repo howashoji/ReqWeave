@@ -1,0 +1,256 @@
+/* 取り込み。画面型は文書・承認系で、3 ペインを DocumentWorkspace で構成する。 */
+.rw-imports {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+    /* 画面本体（rw-shell__main）の高さに収める。これが無いと中の 3 ペインの height: 100% が
+       解決されず、資料や版が増えたぶんだけ画面が縦に伸びる（実機で判明）。 */
+    height: 100%;
+    min-height: 0;
+}
+
+.rw-imports__pane-title {
+    margin: var(--rw-space-3) 0 var(--rw-space-2);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-imports__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    margin: var(--rw-space-2) 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-imports__field input,
+.rw-imports__field select,
+.rw-imports__field textarea,
+.rw-imports__candidate input,
+.rw-imports__candidate textarea {
+    width: 100%;
+    padding: var(--rw-space-2) var(--rw-space-2);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: inherit;
+    font-size: var(--rw-size-body);
+}
+
+.rw-imports__hint,
+.rw-imports__meta {
+    margin: var(--rw-space-1) 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+/* 候補が無いときの「次の一手」。押せる操作の名前をそのまま出す。 */
+.rw-imports__next-list {
+    margin: var(--rw-space-2) 0;
+    padding-left: var(--rw-space-4);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+}
+
+.rw-imports__next-list li + li {
+    margin-top: var(--rw-space-2);
+}
+
+.rw-imports__notice {
+    margin: var(--rw-space-2) 0;
+    padding: var(--rw-space-2);
+    border: 1px solid var(--rw-warn);
+    border-radius: var(--rw-radius-sm);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+}
+
+.rw-imports__list,
+.rw-imports__perspectives {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rw-imports__list li,
+.rw-imports__perspectives li {
+    padding: var(--rw-space-2) 0;
+    border-bottom: 1px solid var(--rw-border);
+}
+
+/* 取り込み済みの 1 件はカード全体が押せる。余白はカード側が持つ。 */
+.rw-imports__list li {
+    padding: 0;
+}
+
+.rw-imports__card {
+    display: block;
+    width: 100%;
+    padding: var(--rw-space-2) var(--rw-space-2) var(--rw-space-2) var(--rw-space-2);
+    border: 0;
+    border-left: 3px solid transparent;
+    border-radius: var(--rw-radius-sm);
+    background: transparent;
+    color: var(--rw-text);
+    font-family: inherit;
+    font-size: var(--rw-size-panel);
+    text-align: left;
+    cursor: pointer;
+}
+
+.rw-imports__card:hover {
+    background: var(--rw-surface);
+}
+
+/* 選択中は一覧・管理系の画面と同じ見た目（surface 地 + accent の左ボーダー）。 */
+.rw-imports__card--selected {
+    background: var(--rw-surface);
+    border-left-color: var(--rw-accent);
+}
+
+.rw-imports__card-name {
+    display: block;
+    margin-bottom: var(--rw-space-1);
+    color: var(--rw-text);
+    word-break: break-all;
+}
+
+.rw-imports__card .rw-imports__meta {
+    display: block;
+}
+
+/* 抽出テキストは行番号つきで表示する（根拠 IMP-nnn#Lm-Ln の該当行を指せるようにする）。 */
+.rw-imports__text {
+    margin: 0;
+    padding: 0 0 0 3.5em;
+    max-height: 40vh;
+    overflow: auto;
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-label);
+}
+
+.rw-imports__line {
+    padding: var(--rw-space-1) var(--rw-space-1);
+    color: var(--rw-text);
+    white-space: pre-wrap;
+}
+
+/* 根拠として指された行（候補と同時に視認する）。 */
+.rw-imports__line--on {
+    background: var(--rw-bg-sub);
+    outline: 1px solid var(--rw-accent);
+}
+
+.rw-imports__source,
+.rw-imports__pre {
+    margin: var(--rw-space-1) 0;
+    padding: var(--rw-space-2);
+    max-height: 30vh;
+    overflow: auto;
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-label);
+    white-space: pre-wrap;
+}
+
+.rw-imports__preview summary {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+    cursor: pointer;
+}
+
+.rw-imports__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--rw-space-2);
+    margin: var(--rw-space-2) 0;
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+}
+
+.rw-imports__candidate {
+    margin: var(--rw-space-2) 0;
+    padding: var(--rw-space-2);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-panel);
+}
+
+/* 候補の本文は既定で「読むだけ」の表示。
+   入力欄の枠・スクロールを外し、全文が折り返して見えるようにする。 */
+.rw-imports__candidate-body {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-text);
+    font-size: var(--rw-size-body);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* 候補の本文は承認可否の判断材料。スクロールせずに読める高さを確保する。
+   足りないときは利用者が縦に広げられる。 */
+.rw-imports__candidate textarea {
+    min-height: 8em;
+    line-height: 1.7;
+    resize: vertical;
+}
+
+.rw-imports__label {
+    margin: 0 0 var(--rw-space-1);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+}
+
+.rw-imports__marks,
+.rw-imports__evidence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-2);
+}
+
+/* ディレクトリ指定の一括取り込みの確認・結果。
+   パネル・バナー系の画面型に準じ、呼び出し元の文脈を保ったまま同じペインへ重ねる。 */
+.rw-imports__batch {
+    margin: var(--rw-space-2) 0;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-panel);
+}
+
+.rw-imports__batch-lead {
+    margin: 0 0 var(--rw-space-1);
+    font-size: var(--rw-size-label);
+    color: var(--rw-text);
+}
+
+.rw-imports__batch-list {
+    max-height: 180px;
+    overflow: auto;
+    margin: 0 0 var(--rw-space-2);
+    padding-left: var(--rw-space-5);
+    font-size: var(--rw-size-meta);
+    color: var(--rw-text-sub);
+    word-break: break-all;
+}
+
+.rw-imports__batch-blocked {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-label);
+    color: var(--rw-danger);
+}
+
+.rw-imports__batch-actions {
+    display: flex;
+    gap: var(--rw-space-2);
+}

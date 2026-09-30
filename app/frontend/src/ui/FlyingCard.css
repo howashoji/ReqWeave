@@ -1,0 +1,24 @@
+/* 到着の演出。色は既存トークンのみ。 */
+.rw-fly {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--rw-fly-w);
+    height: 24px;
+    /* 本文より前・ツールチップ（10）より後ろ。操作の邪魔をしない */
+    z-index: 9;
+    pointer-events: none;
+    border-left: 2px solid var(--rw-info);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    transform: translate(var(--rw-fly-x), var(--rw-fly-y));
+    transition:
+        transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 280ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rw-fly {
+        display: none;
+    }
+}

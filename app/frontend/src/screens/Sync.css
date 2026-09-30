@@ -1,0 +1,103 @@
+/* 同期。画面型はパネル・バナー系。 */
+.rw-sync {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+}
+
+.rw-sync__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-sync__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-sync__subtitle {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+    color: var(--rw-text-sub);
+}
+
+.rw-sync__facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-sync__facts dt {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-sync__facts dd {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    margin: var(--rw-space-1) 0 0;
+}
+
+.rw-sync__meta {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+    word-break: break-all;
+}
+
+.rw-sync__notice,
+.rw-sync__progress {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-sync__progress {
+    color: var(--rw-accent);
+}
+
+.rw-sync__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-sync__preview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-border);
+    border-left: 3px solid var(--rw-accent);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-sync__items {
+    margin: 0;
+    padding-left: var(--rw-space-5);
+    font-size: var(--rw-size-label);
+}
+
+.rw-sync__detail {
+    margin: var(--rw-space-2) 0 0;
+    padding: var(--rw-space-2);
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-bg);
+    color: var(--rw-text-sub);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-label);
+    white-space: pre-wrap;
+    word-break: break-word;
+}

@@ -1,0 +1,64 @@
+/* トークン消費実績。画面型は一覧・管理系。 */
+.rw-token {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+}
+
+.rw-token__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-token__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-token__subtitle {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+}
+
+.rw-token__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-token__latest {
+    display: flex;
+    flex-direction: column;
+}
+
+.rw-token__figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-token__figures dt {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-token__figures dd {
+    margin: var(--rw-space-1) 0 0;
+    color: var(--rw-text);
+    font-size: var(--rw-size-body);
+}
+
+.rw-token__hint {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}

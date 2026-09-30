@@ -1,0 +1,36 @@
+/* 状態チップ。色は必ずトークン参照にする（生の色値を書かない）。 */
+.rw-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rw-space-1);
+    padding: var(--rw-space-1) var(--rw-space-2);
+    border-radius: var(--rw-radius-sm);
+    border: var(--rw-border-width) solid;
+    font-size: var(--rw-size-label);
+    line-height: 1.6;
+    white-space: nowrap;
+}
+
+.rw-chip--accent {
+    color: var(--rw-accent);
+    background: var(--rw-accent-chip-bg);
+    border-color: var(--rw-accent-chip-border);
+}
+
+.rw-chip--warn {
+    color: var(--rw-warn);
+    background: var(--rw-warn-chip-bg);
+    border-color: var(--rw-warn-chip-border);
+}
+
+.rw-chip--danger {
+    color: var(--rw-danger);
+    background: var(--rw-danger-chip-bg);
+    border-color: var(--rw-danger-chip-border);
+}
+
+.rw-chip--info {
+    color: var(--rw-info);
+    background: var(--rw-info-chip-bg);
+    border-color: var(--rw-info-chip-border);
+}

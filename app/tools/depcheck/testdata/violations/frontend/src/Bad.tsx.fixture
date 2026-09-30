@@ -1,0 +1,6 @@
+import {readFileSync} from 'node:fs'
+
+export async function load() {
+    const res = await fetch('/api/projects')
+    return {res, readFileSync}
+}

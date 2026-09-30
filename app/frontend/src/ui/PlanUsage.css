@@ -1,0 +1,35 @@
+/* ChatGPT のプランの残量。一覧・管理系。 */
+.rw-planusage {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+}
+
+.rw-planusage__title {
+    margin: 0;
+    font-size: var(--rw-size-body);
+}
+
+.rw-planusage__figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-3);
+    margin: 0;
+}
+
+.rw-planusage__figures dt {
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}
+
+.rw-planusage__figures dd {
+    margin: 0;
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+}
+
+.rw-planusage__hint {
+    margin: 0;
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}

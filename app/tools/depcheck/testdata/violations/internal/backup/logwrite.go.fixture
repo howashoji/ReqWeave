@@ -1,0 +1,14 @@
+package backup
+
+import (
+	"os"
+	"path/filepath"
+
+	"github.com/howashoji/ReqWeave/app/internal/projectstore"
+)
+
+// ログ出力層以外が動作ログの保存先へ書く違反。
+// マスキングフィルタとローテーションを迂回する経路になる。
+func writeLog(paths projectstore.AppPaths, line []byte) error {
+	return os.WriteFile(filepath.Join(paths.LogsDir(), "extra.log"), line, 0o600)
+}

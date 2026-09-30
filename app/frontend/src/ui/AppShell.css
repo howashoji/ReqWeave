@@ -1,0 +1,130 @@
+/* 担当者モードの 3 層構造。角丸なし・1px 区切り・影なし。 */
+/*
+ * 行の役割を**位置で決めない**。
+ *
+ * 以前は `grid-template-rows: auto auto 1fr auto` と位置で決めていたため、
+ * 工程ガイドの行を 3 番目へ挿し込んだ時点で割り当てが 1 つずれ、
+ * **ガイドの行が縦の余りを全部取り、本体が内側でスクロールしなくなった**。
+ * 結果、内容の長い画面ではシェルごと画面からあふれ、上部ナビが画面外へ出ていた。
+ * 縦に並べたうえで「**本体だけが伸びる**」と書けば、行が増えても壊れない。
+ */
+.rw-shell {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    background: var(--rw-bg);
+    color: var(--rw-text);
+}
+
+/* ヘッダー・ストリップ・工程ガイド・ステータス行は内容の高さに固定する（縮ませない）。 */
+.rw-shell > .rw-shell__header,
+.rw-shell > .rw-strip,
+.rw-shell > .rw-guide,
+.rw-shell > .rw-statusline {
+    flex: 0 0 auto;
+}
+
+.rw-shell__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--rw-space-4);
+    padding: var(--rw-space-2) var(--rw-space-4);
+    background: var(--rw-bg-sub);
+    border-bottom: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-breadcrumb {
+    font-size: var(--rw-size-label);
+    color: var(--rw-text-sub);
+}
+
+.rw-breadcrumb__sep {
+    color: var(--rw-muted);
+}
+
+.rw-shell__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--rw-space-4);
+    padding: var(--rw-space-2) var(--rw-space-4);
+    background: var(--rw-bg-sub);
+    border-bottom: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-strip__completeness {
+    display: flex;
+    align-items: center;
+    gap: var(--rw-space-2);
+}
+
+.rw-strip__label {
+    font-size: var(--rw-size-meta);
+    color: var(--rw-muted);
+}
+
+.rw-strip__overall {
+    font-size: var(--rw-size-label);
+    color: var(--rw-text);
+}
+
+.rw-segments {
+    display: inline-flex;
+    gap: var(--rw-space-1);
+}
+
+.rw-segment {
+    display: inline-block;
+    width: 44px;
+    height: 6px;
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    border: var(--rw-border-width) solid var(--rw-border);
+    overflow: hidden;
+}
+
+.rw-segment__fill {
+    display: block;
+    height: 100%;
+    /* 充足率は --rw-segment-percent（値）だけを JSX から受け取る */
+    width: var(--rw-segment-percent, 0%);
+    background: var(--rw-accent);
+}
+
+.rw-strip__counts {
+    display: flex;
+    gap: var(--rw-space-2);
+}
+
+.rw-shell__main {
+    /* 縦の余りを取るのは本体だけ。ここが唯一の伸びる要素。 */
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: auto;
+    /* ヘッダー・コンテキストストリップと同じ左右 16px を本体にも与える。
+       これが無いと、画面の中身がウィンドウの端に接する（2026-09-04 に実機で判明）。
+       各画面のカード自身の padding はカードの内側なので、二重にはならない。 */
+    padding: var(--rw-space-4);
+}
+
+.rw-statusline {
+    display: flex;
+    gap: var(--rw-space-5);
+    padding: var(--rw-space-2) var(--rw-space-4);
+    background: var(--rw-bg-sub);
+    border-top: var(--rw-border-width) solid var(--rw-border);
+    font-size: var(--rw-size-meta);
+    color: var(--rw-muted);
+}
+
+.rw-statusline__item .rw-mono {
+    color: var(--rw-text-sub);
+}

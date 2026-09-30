@@ -1,0 +1,19 @@
+package codex
+
+import (
+	"context"
+	"os/exec"
+
+	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
+)
+
+// アダプタがブラウザを開く違反（アダプタは認可の URL を返すだけ）。
+// アダプタは認可の URL を返すだけで、外部のプログラムを起動しない。
+func openAuthPage(ctx context.Context, url string) {
+	wailsruntime.BrowserOpenURL(ctx, url)
+}
+
+// OS の既定のブラウザを直接起動する形も同じ。
+func openWithOS(url string) error {
+	return exec.Command("/usr/bin/open", url).Run()
+}

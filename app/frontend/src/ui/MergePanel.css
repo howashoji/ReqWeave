@@ -1,0 +1,79 @@
+/* 競合マージ。パネル・バナー系。 */
+.rw-merge {
+    margin: var(--rw-space-3) 0;
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-warn);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-panel);
+}
+
+.rw-merge__title {
+    margin: 0 0 var(--rw-space-1);
+    font-size: var(--rw-size-body);
+}
+
+.rw-merge__notice {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-merge__item {
+    margin: var(--rw-space-2) 0;
+    padding: var(--rw-space-2);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+}
+
+.rw-merge__label {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+}
+
+.rw-merge__panes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--rw-space-2);
+}
+
+.rw-merge__pane-title {
+    margin: 0 0 var(--rw-space-1);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-merge__pre {
+    margin: 0;
+    padding: var(--rw-space-2);
+    max-height: 24vh;
+    overflow: auto;
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-bg-sub);
+    color: var(--rw-text);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-label);
+    white-space: pre-wrap;
+}
+
+.rw-merge__choices {
+    margin: var(--rw-space-2) 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.rw-merge__choice {
+    display: block;
+    margin: var(--rw-space-1) 0;
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+}
+
+.rw-merge__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-2);
+}

@@ -1,0 +1,116 @@
+# 成果物ドキュメントのテンプレート定義（文書・章・生成方式の一覧）。
+#
+# アプリ組み込みの静的データ（Go embed）。章観点 ID は対話のメタモデルの章観点と同一の英語識別子。
+# kind: generated = AI 生成の対象 / assembled = レコードからの機械組立て（AI 生成しない）。
+documents:
+  - kind_id: requirements
+    name: 要件定義書
+    dir: 10-requirements
+    chapters:
+      - file: 00-index.md
+        chapter: index
+        title: 目次・表記規約
+        kind: assembled
+      - file: 01-business-context.md
+        chapter: background
+        title: 業務背景
+        kind: generated
+      - file: 02-scope.md
+        chapter: scope
+        title: スコープ
+        kind: generated
+      - file: 03-users.md
+        chapter: users
+        title: 利用者
+        kind: generated
+      - file: 04-business-flow.md
+        chapter: business-flow
+        title: 業務フロー
+        kind: generated
+      - file: 05-use-cases.md
+        chapter: use-cases
+        title: ユースケース
+        kind: generated
+      - file: 06-functional-requirements.md
+        chapter: functional-requirements
+        title: 機能要件
+        kind: generated
+      - file: 07-non-functional-requirements.md
+        chapter: non-functional-requirements
+        title: 非機能要件
+        kind: generated
+      - file: 08-domain-model.md
+        chapter: domain-model
+        title: ドメインモデル
+        kind: generated
+      - file: 09-data-requirements.md
+        chapter: data-requirements
+        title: データ要件
+        kind: generated
+      - file: 10-external-interfaces.md
+        chapter: external-interfaces
+        title: 外部IF
+        kind: generated
+      - file: 11-constraints.md
+        chapter: constraints
+        title: 制約
+        kind: generated
+      - file: 12-risks-assumptions.md
+        chapter: risks-assumptions
+        title: 前提・リスク
+        kind: generated
+
+  - kind_id: basic-design
+    name: 基本設計書
+    dir: 20-basic-design
+    chapters:
+      - file: 01-architecture.md
+        chapter: architecture
+        title: 全体アーキテクチャ
+        kind: generated
+      - file: 02-ui-design.md
+        chapter: ui-design
+        title: 画面一覧・画面遷移
+        kind: generated
+      - file: 03-function-design.md
+        chapter: function-design
+        title: 業務機能・業務ロジック設計
+        kind: generated
+      - file: 04-data-design.md
+        chapter: data-design
+        title: データ設計
+        kind: generated
+      - file: 05-external-interface-design.md
+        chapter: external-interface-design
+        title: 外部接続設計
+        kind: generated
+      - file: 06-report-design.md
+        chapter: report-design
+        title: 帳票・出力設計
+        kind: generated
+      - file: 07-integration-design.md
+        chapter: integration-design
+        title: 他システム連携・データ受け渡し設計
+        kind: generated
+      - file: 08-error-handling-security.md
+        chapter: error-handling-security
+        title: エラー処理・セキュリティ
+        kind: generated
+
+# 共通文書（成果物種別によらず出力する。すべて機械組立て）。
+common:
+  - file: glossary.md
+    chapter: glossary
+    title: 用語集
+    kind: assembled
+    dir: 00-project
+  - file: decisions.md
+    chapter: decisions
+    title: 決定事項リスト
+    kind: assembled
+    dir: 00-project
+  - file: issues.md
+    chapter: issues
+    title: 未決事項リスト
+    kind: assembled
+    dir: 00-project

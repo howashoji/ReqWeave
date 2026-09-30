@@ -1,0 +1,55 @@
+/* 予約の選択。パネル・バナー系。 */
+.rw-workstart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-border);
+    border-left: 3px solid var(--rw-accent);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-workstart__title {
+    margin: 0;
+    font-size: var(--rw-size-body);
+}
+
+.rw-workstart__warning {
+    margin: 0;
+    color: var(--rw-warn);
+    font-size: var(--rw-size-label);
+}
+
+.rw-workstart__choices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: var(--rw-space-2);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+}
+
+.rw-workstart__legend,
+.rw-workstart__hint {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-workstart__choice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--rw-space-2);
+}
+
+.rw-workstart__choice > span {
+    display: flex;
+    flex-direction: column;
+}
+
+.rw-workstart__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}

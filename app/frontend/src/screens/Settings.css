@@ -1,0 +1,106 @@
+/* 設定。画面型は一覧・管理系。 */
+.rw-settings__section {
+    margin-bottom: var(--rw-space-5);
+    padding: var(--rw-space-4);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-settings__title {
+    margin: 0 0 var(--rw-space-3);
+    font-size: var(--rw-size-body);
+}
+
+.rw-settings__row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: var(--rw-space-3);
+    align-items: center;
+    padding: var(--rw-space-2) 0;
+    border-bottom: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-settings__row:last-child {
+    border-bottom: none;
+}
+
+.rw-settings__label {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-settings__value {
+    font-size: var(--rw-size-body);
+}
+
+.rw-settings__value--mono {
+    font-family: var(--rw-font-mono);
+}
+
+.rw-settings__input,
+.rw-settings__select {
+    padding: var(--rw-space-2) var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-body);
+}
+
+.rw-settings__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-3);
+}
+
+/* サインアウトの確認。背後を操作させない面（Overlay の modal）の中身。 */
+.rw-settings__confirm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+    max-width: 480px;
+}
+
+.rw-settings__hint {
+    margin: var(--rw-space-1) 0 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-settings__message {
+    margin: var(--rw-space-3) 0 0;
+    padding: var(--rw-space-3) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-left: 3px solid var(--rw-info);
+    background: var(--rw-bg);
+    font-size: var(--rw-size-body);
+}
+
+.rw-settings__message[data-tone='danger'] {
+    border-left-color: var(--rw-danger);
+}
+
+.rw-settings__message[data-tone='accent'] {
+    border-left-color: var(--rw-accent);
+}
+
+.rw-settings__message[data-tone='warn'] {
+    border-left-color: var(--rw-warn);
+}
+
+/* 診断情報の書き出しの内容確認。
+   長い本文でも画面の外へはみ出さないよう、この枠の中だけでスクロールさせる。 */
+.rw-settings__diagnostic {
+    margin: var(--rw-space-3) 0 0;
+    padding: var(--rw-space-3);
+    max-height: 288px;
+    overflow: auto;
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-panel);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}

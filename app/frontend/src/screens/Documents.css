@@ -1,0 +1,123 @@
+/* 成果物プレビュー・版差分。画面型は文書・承認系。 */
+.rw-documents {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+    /* 画面本体（rw-shell__main）の高さに収める。これが無いと中の 3 ペインの height: 100% が
+       解決されず、資料や版が増えたぶんだけ画面が縦に伸びる（実機で判明）。 */
+    height: 100%;
+    min-height: 0;
+}
+
+.rw-documents__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-documents__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-documents__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+}
+
+.rw-documents__pane-title {
+    margin: var(--rw-space-3) 0 var(--rw-space-2);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-documents__versions,
+.rw-documents__chapters {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rw-documents__versions li,
+.rw-documents__chapters li {
+    display: flex;
+    gap: var(--rw-space-1);
+    align-items: center;
+    margin-bottom: var(--rw-space-1);
+}
+
+.rw-documents__progress {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-documents__none,
+.rw-documents__ok {
+    margin: var(--rw-space-2) 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-documents__ok {
+    color: var(--rw-accent);
+}
+
+.rw-documents__checks,
+.rw-documents__violations {
+    margin: 0;
+    padding-left: var(--rw-space-4);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-documents__violations li {
+    margin-bottom: var(--rw-space-2);
+}
+
+.rw-documents__ids {
+    display: block;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+/* 版差分。追加・削除は色と記号（+ / -）を併用する。 */
+.rw-diff__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rw-diff__file {
+    margin-bottom: var(--rw-space-4);
+}
+
+.rw-diff__name {
+    margin: 0 0 var(--rw-space-1);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-diff__lines {
+    overflow-x: auto;
+    margin: 0;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+    line-height: 1.6;
+}
+
+.rw-diff__line--add {
+    color: var(--rw-accent);
+}
+
+.rw-diff__line--remove {
+    color: var(--rw-danger);
+}
+
+.rw-diff__line--equal {
+    color: var(--rw-text-sub);
+}

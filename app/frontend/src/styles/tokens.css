@@ -1,0 +1,121 @@
+/*
+ * 画面の見た目の基準 — カラートークン・タイポグラフィ・余白・形。
+ *
+ * 全画面の配色・文字・余白はここのトークンだけを参照する（画面ごとに生の値を書かない）。
+ * 値を変えるときは、コントラスト基準（本文テキスト 4.5:1 以上・両テーマ）を満たすことを
+ * tokens.test.ts で確かめる。意味色（accent / warn / danger / info）を増やさない。
+ *
+ * テーマ: 既定はダーク。`<html data-theme="light">` で手動切替する。
+ *   OS 外観設定への自動追従はしないため prefers-color-scheme は使わない。
+ *   ダーク/ライトは本ファイルのトークン差し替えのみで実現し、レイアウト・構造・文言は同一。
+ */
+
+:root {
+    color-scheme: dark;
+
+    /* --- カラートークン 13 種（ダーク = 基準値そのまま） --- */
+    --rw-bg: #16181d;          /* 画面地 */
+    --rw-bg-sub: #14161a;      /* コンテキストストリップ・ステータスライン地 */
+    --rw-surface: #1e2127;     /* カード・入力欄 */
+    --rw-panel: #191c21;       /* サイドパネル地 */
+    --rw-border: #2e333b;      /* 境界線（常に 1px。影は使わない） */
+    --rw-text: #e8eaed;        /* 本文 */
+    --rw-text-sub: #c3c7cd;    /* 従属テキスト */
+    --rw-muted: #8b919c;       /* ラベル・メタ情報・無効化表示 */
+    --rw-faint: #4a505a;       /* 最弱（区切り・注記） */
+    --rw-accent: #5fc99a;      /* 進捗・承認・AI 発話マーカー・プライマリ操作 */
+    --rw-warn: #d9a75f;        /* 未決・警告（トークン上限接近を含む） */
+    --rw-danger: #e0716a;      /* 期限超過・エラー・上限到達ブロック */
+    --rw-info: #7fa3f0;        /* 抽出候補・情報 */
+
+    /*
+     * 状態チップの地・枠（「状態色の文字 + 淡い同系背景 + 同系枠線」の実装値）。
+     * 新しい意味色ではなく、上の状態色を画面地へ重ねた派生値（地 = 16% / 枠 = 38%）。
+     * 状態色の文字がチップ地に対して 4.5:1 以上になることを tokens.test.ts が検証する。
+     */
+    --rw-accent-chip-bg: #223431;
+    --rw-accent-chip-border: #325b4c;
+    --rw-warn-chip-bg: #352f28;
+    --rw-warn-chip-border: #604e36;
+    --rw-danger-chip-bg: #362629;
+    --rw-danger-chip-border: #633a3a;
+    --rw-info-chip-bg: #272e3f;
+    --rw-info-chip-border: #3e4d6d;
+
+    /* プライマリ操作（緑塗り）の上に載る文字 */
+    --rw-on-accent: #16181d;
+    /* 背後を操作させない面の覆い。暗い地では黒を薄く重ねる。 */
+    --rw-scrim: #0000008c;   /* 黒 55%（16 進 8 桁 = 末尾がアルファ） */
+
+    /* --- タイポグラフィ（フォントは配布物に同梱し、外部から読み込まない） --- */
+    --rw-font-sans: 'Noto Sans JP', 'Hiragino Sans', system-ui, sans-serif;
+    --rw-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+    /* サイズスケール。--rw-size-body-answer は回答モードのみ（非エンジニア配慮） */
+    --rw-size-meta: 11px;
+    --rw-size-label: 12px;
+    --rw-size-panel: 13px;
+    --rw-size-body: 14px;
+    --rw-size-body-answer: 15px;
+    --rw-size-heading: 18px;
+
+    /*
+     * --- 余白スケール ---
+     *
+     * 余白は 4px の倍数で 5 段に限る。**px を直接書かない**（詰まり方が画面ごとにばらつき、
+     * 「狭苦しい」という指摘の原因になった。2026-09-07 の実機確認）。
+     *   1 = 隣り合う小要素（チップ・ボタンの間）
+     *   2 = 要素の内側の余白・行の上下
+     *   3 = 小さなまとまりの間
+     *   4 = 区画（ペイン・カード）の内側・区画どうしの間
+     *   5 = 画面の大きな区切り
+     */
+    --rw-space-1: 4px;
+    --rw-space-2: 8px;
+    --rw-space-3: 12px;
+    --rw-space-4: 16px;
+    --rw-space-5: 24px;
+
+    /* --- 形（角丸 4〜8px・境界線は常に 1px・影は使わない） --- */
+    --rw-radius-sm: 4px;
+    --rw-radius-md: 6px;
+    --rw-radius-lg: 8px;
+    --rw-border-width: 1px;
+}
+
+/*
+ * ライト。状態色の accent / warn / danger はコントラスト基準を満たすため基準値から
+ * わずかに暗くしてある（色相・彩度は不変。コントラストのための微調整）:
+ *   accent #22855a → #1e7650 / warn #9a5b1f → #97591e / danger #c0453c → #b34038
+ * 調整前は画面地・チップ地に対して 4.03〜4.43:1 となり本文テキストの 4.5:1 を満たさなかった。
+ */
+:root[data-theme='light'] {
+    color-scheme: light;
+
+    --rw-bg: #f5f6f8;
+    --rw-bg-sub: #eef0f4;
+    --rw-surface: #ffffff;
+    --rw-panel: #fafbfc;
+    --rw-border: #d9dde3;
+    --rw-text: #1a2330;
+    --rw-text-sub: #3c4552;
+    --rw-muted: #5a6474;
+    --rw-faint: #98a0ab;
+    --rw-accent: #1e7650;
+    --rw-warn: #97591e;
+    --rw-danger: #b34038;
+    --rw-info: #34579a;
+
+    --rw-accent-chip-bg: #e0e9e7;
+    --rw-accent-chip-border: #a3c5b8;
+    --rw-warn-chip-bg: #ece6e2;
+    --rw-warn-chip-border: #d1baa5;
+    --rw-danger-chip-bg: #eee4e5;
+    --rw-danger-chip-border: #dcb1af;
+    --rw-info-chip-bg: #e2e6ef;
+    --rw-info-chip-border: #acbad4;
+
+    --rw-on-accent: #ffffff;
+    /* 明るい地では同じ黒でも重く見えるため薄くする。 */
+    --rw-scrim: #1a233059;   /* 濃紺 35%。明るい地では黒より重く見えないようにする */
+}

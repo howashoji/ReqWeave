@@ -1,0 +1,15 @@
+{
+  "_comment": "gen_appicon.py --build が書き出す。手で編集しない。",
+  "svg": "d0c4ac74f554624f7e42d3f181d505949104c7217c7280c7b6f19e6aaac037c6",
+  "png": "c1dbc5db46f42d0585790cb2d07305b7aadd0610025c8b6e3e75546617ee3763",
+  "ico": "bc3878b60a68ce01c04db80871881cfb0af6f18584300478e7729872ec29fc75",
+  "png_size": 1024,
+  "ico_sizes": [
+    16,
+    32,
+    48,
+    64,
+    128,
+    256
+  ]
+}

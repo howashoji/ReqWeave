@@ -1,0 +1,24 @@
+{
+  "anthropic": [
+    {"id": "claude-opus-5", "display_name": "Claude Opus 5", "context_window": 1000000, "max_output": 128000, "tier": "primary", "default_for_tier": true, "supports_reasoning": true},
+    {"id": "claude-fable-5", "display_name": "Claude Fable 5", "context_window": 1000000, "max_output": 128000, "tier": "other", "supports_reasoning": true},
+    {"id": "claude-sonnet-5", "display_name": "Claude Sonnet 5", "context_window": 1000000, "max_output": 128000, "tier": "other", "supports_reasoning": true},
+    {"id": "claude-haiku-4-5-20251001", "display_name": "Claude Haiku 4.5", "context_window": 200000, "max_output": 64000, "tier": "light", "default_for_tier": true, "supports_reasoning": false}
+  ],
+  "openai": [
+    {"id": "gpt-5.6-sol", "display_name": "GPT-5.6 Sol", "context_window": 1050000, "max_output": 128000, "tier": "primary", "default_for_tier": true, "supports_reasoning": true},
+    {"id": "gpt-5.6-terra", "display_name": "GPT-5.6 Terra", "context_window": 1050000, "max_output": 128000, "tier": "other", "supports_reasoning": true},
+    {"id": "gpt-5.6-luna", "display_name": "GPT-5.6 Luna", "context_window": 1050000, "max_output": 128000, "tier": "light", "default_for_tier": true, "supports_reasoning": true}
+  ],
+  "codex": [
+    {"id": "gpt-5.5", "display_name": "GPT-5.5", "context_window": 272000, "max_output": 0, "tier": "primary", "default_for_tier": true, "supports_reasoning": true},
+    {"id": "gpt-5.4", "display_name": "gpt-5.4", "context_window": 272000, "max_output": 0, "tier": "other", "supports_reasoning": true},
+    {"id": "gpt-5.4-mini", "display_name": "GPT-5.4-Mini", "context_window": 272000, "max_output": 0, "tier": "light", "default_for_tier": true, "supports_reasoning": true},
+    {"id": "gpt-5.3-codex", "display_name": "gpt-5.3-codex", "context_window": 272000, "max_output": 0, "tier": "other", "supports_reasoning": true},
+    {"id": "gpt-5.2", "display_name": "gpt-5.2", "context_window": 272000, "max_output": 0, "tier": "other", "supports_reasoning": true}
+  ],
+  "google": [
+    {"id": "gemini-3.7-flash", "display_name": "Gemini 3.7 Flash", "context_window": 0, "max_output": 0, "tier": "primary", "default_for_tier": true, "supports_reasoning": true},
+    {"id": "gemini-3.5-flash-lite", "display_name": "Gemini 3.5 Flash-Lite", "context_window": 0, "max_output": 0, "tier": "light", "default_for_tier": true, "supports_reasoning": true}
+  ]
+}

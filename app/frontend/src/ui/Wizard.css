@@ -1,0 +1,85 @@
+/* ウィザード・回答系。統制表示を持たない単独画面。 */
+.rw-wizard {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    height: 100%;
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    /* 非エンジニアのステークホルダー配慮で本文 15px 基準 */
+    font-size: var(--rw-size-body-answer);
+}
+
+.rw-wizard__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--rw-space-4);
+    padding: var(--rw-space-3) var(--rw-space-5);
+    border-bottom: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-wizard__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-wizard__progress {
+    margin: 0;
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}
+
+/* 本文とペインが作業領域の高さを分け合う（ペインが無いときは本文が占める）。 */
+.rw-wizard__work {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 0;
+    overflow: hidden;
+}
+
+.rw-wizard__body {
+    padding: var(--rw-space-5);
+    overflow: auto;
+    min-height: 0;
+}
+
+/* 境界のつまみ（ポインタでもキーボードでも動かせる）。 */
+.rw-wizard__resizer {
+    cursor: row-resize;
+    background: var(--rw-border);
+    border: none;
+}
+
+.rw-wizard__resizer:focus-visible {
+    outline: 2px solid var(--rw-accent);
+    outline-offset: -2px;
+}
+
+/* ペインの中だけでスクロールする（ページ全体を伸ばさない）。 */
+.rw-wizard__pane {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--rw-bg-sub);
+    border-top: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-wizard__notice {
+    margin: 0;
+    padding: 0 var(--rw-space-5) var(--rw-space-2);
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}
+
+.rw-wizard__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--rw-space-3) var(--rw-space-5);
+    border-top: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-wizard__footer-end {
+    display: flex;
+    gap: var(--rw-space-2);
+}

@@ -1,0 +1,13 @@
+/* アプリ全体の案内・エラー（画面の先頭に出す。「原因＋次の行動」の様式は各画面と共通）。 */
+.rw-app__status {
+    margin: 0;
+    padding: var(--rw-space-2) var(--rw-space-4);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-app__status[role='alert'] {
+    border-left: 2px solid var(--rw-danger);
+    background: var(--rw-danger-chip-bg);
+    color: var(--rw-text);
+}

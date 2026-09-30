@@ -1,0 +1,35 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "ReqWeave",
+  "outputfilename": "ReqWeave",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "HOWA SHOJI K.K."
+  },
+  "info": {
+    "companyName": "Howa Shoji",
+    "productName": "ReqWeave",
+    "productVersion": "0.2.0",
+    "copyright": "Copyright © Howa Shoji",
+    "comments": "対話型の要件定義・基本設計支援クライアント",
+    "fileAssociations": [
+      {
+        "ext": "rwvq",
+        "name": "ReqWeave 質問票",
+        "description": "ReqWeave 質問票（回答用）",
+        "iconName": "appicon",
+        "role": "Editor"
+      },
+      {
+        "ext": "rwva",
+        "name": "ReqWeave 返送ファイル",
+        "description": "ReqWeave 返送ファイル（回答の取り込み用）",
+        "iconName": "appicon",
+        "role": "Editor"
+      }
+    ]
+  }
+}

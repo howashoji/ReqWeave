@@ -1,0 +1,7 @@
+package binding
+
+// 更新の取得先を updater 以外の層で直書きする違反。
+// 通信先の一覧が internal/updater の定数から読めなくなる。
+const manifestURL = "https://github.com/howashoji/ReqWeave/releases/latest/download/update-manifest.json"
+
+var _ = manifestURL

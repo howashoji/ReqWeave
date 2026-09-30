@@ -1,0 +1,33 @@
+/* 対話系の発話行。吹き出しにしない。 */
+.rw-utterance {
+    padding: var(--rw-space-2) var(--rw-space-4) var(--rw-space-3);
+    border-left: 3px solid var(--rw-border);
+}
+
+.rw-utterance--ai {
+    border-left-color: var(--rw-accent);
+}
+
+.rw-utterance--human {
+    /* faint は非テキスト（ボーダー）としてのみ使う（文字には薄すぎる） */
+    border-left-color: var(--rw-faint);
+}
+
+.rw-utterance__head {
+    display: flex;
+    gap: var(--rw-space-3);
+    align-items: baseline;
+    font-size: var(--rw-size-meta);
+    color: var(--rw-muted);
+}
+
+.rw-utterance__flag {
+    color: var(--rw-warn);
+}
+
+.rw-utterance__body {
+    margin: var(--rw-space-1) 0 0;
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+    white-space: pre-wrap;
+}

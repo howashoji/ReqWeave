@@ -1,0 +1,97 @@
+/* 工程ガイド。ストリップの 2 行目。色・余白はトークン参照のみ。 */
+.rw-guide {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-2) var(--rw-space-4);
+    border-bottom: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-panel);
+    font-size: var(--rw-size-label);
+    color: var(--rw-text-sub);
+}
+
+/* いまの工程。何合目かの数は数値なのでモノスペース。 */
+.rw-guide__stage {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rw-space-2);
+    color: var(--rw-text);
+}
+
+.rw-guide__step {
+    padding: 0 var(--rw-space-1);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    color: var(--rw-muted);
+}
+
+/* 次にやること。行の主役なので本文の階調にする。 */
+.rw-guide__next {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rw-space-2);
+    color: var(--rw-text);
+}
+
+.rw-guide__label {
+    color: var(--rw-muted);
+}
+
+.rw-guide__note {
+    color: var(--rw-muted);
+}
+
+/*
+ * 1 サイクルの流れ。工程ガイドの行へ収め、2 段にして縦を圧迫しない。
+ * 完了済み・未到達は弱いトーンに落とし、現在地だけを本文の階調にする。
+ */
+.rw-cycle {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--rw-space-1);
+    margin-left: auto;
+}
+
+.rw-cycle__step {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rw-space-1);
+    color: var(--rw-muted);
+}
+
+/* 完了済みも未到達も muted。現在地だけを本文の階調へ上げる（色だけに頼らない）。 */
+.rw-cycle__step[data-state='current'] {
+    color: var(--rw-text);
+}
+
+/* 区切りの ▶ は文字なので faint を使わない（faint は非テキスト専用）。 */
+.rw-cycle__sep {
+    color: var(--rw-muted);
+}
+
+.rw-cycle__here {
+    color: var(--rw-accent);
+}
+
+/* 抽出中は現在地が動いていることを示す（動きを減らす設定では止める）。 */
+.rw-guide[data-cycle='抽出'] .rw-cycle__step[data-state='current'] {
+    animation: rw-cycle-blink 1400ms ease-in-out infinite;
+}
+
+@keyframes rw-cycle-blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rw-guide[data-cycle='抽出'] .rw-cycle__step[data-state='current'] {
+        animation: none;
+    }
+}

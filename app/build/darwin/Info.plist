@@ -1,0 +1,101 @@
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+        <key>CFBundleName</key>
+        <string>{{.Info.ProductName}}</string>
+        <key>CFBundleExecutable</key>
+        <string>{{.OutputFilename}}</string>
+        <key>CFBundleIdentifier</key>
+        <string>net.howashoji.reqweave</string>
+        <key>CFBundleVersion</key>
+        <string>{{.Info.ProductVersion}}</string>
+        <key>CFBundleGetInfoString</key>
+        <string>{{.Info.Comments}}</string>
+        <key>CFBundleShortVersionString</key>
+        <string>{{.Info.ProductVersion}}</string>
+        <key>CFBundleIconFile</key>
+        <string>iconfile</string>
+        <key>LSMinimumSystemVersion</key>
+        <string>10.13.0</string>
+        <key>NSHighResolutionCapable</key>
+        <string>true</string>
+        <key>NSHumanReadableCopyright</key>
+        <string>{{.Info.Copyright}}</string>
+        <key>CFBundleDocumentTypes</key>
+        <array>
+          <!-- プロジェクト（パッケージ）。下の型宣言を参照する -->
+          <dict>
+            <key>CFBundleTypeName</key>
+            <string>ReqWeave プロジェクト</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>LSTypeIsPackage</key>
+            <true/>
+            <key>LSItemContentTypes</key>
+            <array>
+              <string>net.howashoji.reqweave.project</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>appicon</string>
+          </dict>
+          {{range .Info.FileAssociations}}
+          <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+              <string>{{.Ext}}</string>
+            </array>
+            <key>CFBundleTypeName</key>
+            <string>{{.Name}}</string>
+            <key>CFBundleTypeRole</key>
+            <string>{{.Role}}</string>
+            <key>CFBundleTypeIconFile</key>
+            <string>{{.IconName}}</string>
+          </dict>
+          {{end}}
+        </array>
+        <!-- プロジェクトは拡張子付きの「フォルダ」であり、Finder に 1 個のファイルとして
+             扱わせるため com.apple.package に準拠する型として宣言する。
+             Wails の fileAssociations は拡張子から型を導けないため、ここに直接書く。 -->
+        <key>UTExportedTypeDeclarations</key>
+        <array>
+          <dict>
+            <key>UTTypeIdentifier</key>
+            <string>net.howashoji.reqweave.project</string>
+            <key>UTTypeDescription</key>
+            <string>ReqWeave プロジェクト</string>
+            <key>UTTypeConformsTo</key>
+            <array>
+              <string>com.apple.package</string>
+            </array>
+            <key>UTTypeIconFile</key>
+            <string>appicon</string>
+            <key>UTTypeTagSpecification</key>
+            <dict>
+              <key>public.filename-extension</key>
+              <array>
+                <string>reqweave</string>
+              </array>
+            </dict>
+          </dict>
+        </array>
+        {{if .Info.Protocols}}
+        <key>CFBundleURLTypes</key>
+        <array>
+          {{range .Info.Protocols}}
+            <dict>
+                <key>CFBundleURLName</key>
+                <string>net.howashoji.reqweave.{{.Scheme}}</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>{{.Scheme}}</string>
+                </array>
+                <key>CFBundleTypeRole</key>
+                <string>{{.Role}}</string>
+            </dict>
+          {{end}}
+        </array>
+        {{end}}
+    </dict>
+</plist>

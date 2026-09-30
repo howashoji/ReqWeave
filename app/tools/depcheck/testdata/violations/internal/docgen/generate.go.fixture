@@ -1,0 +1,8 @@
+package docgen
+
+// 適合フィクスチャ: 成果物生成は AI 呼び出しを伴うため、本規則の対象外（Paths に入っていない）。
+import (
+	"github.com/howashoji/ReqWeave/app/internal/aiprovider"
+)
+
+var _ = aiprovider.EffortHigh

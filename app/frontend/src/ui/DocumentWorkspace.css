@@ -1,0 +1,102 @@
+/* 文書・承認系の 3 ペイン。 */
+.rw-doc {
+    display: grid;
+    /* 左右の幅は利用者が境界のつまみで変えられる。
+       既定は左 220 / 右 360（右は候補の本文を読んで承認可否を判断する場所のため広い）。
+       値は JSX から --rw-doc-* で受け取る（保存先と許容範囲はバインディングが持つ）。
+       中央は minmax(0, …) で潰れないようにする。 */
+    grid-template-columns:
+        var(--rw-doc-versions, 220px) auto minmax(0, 1fr)
+        auto var(--rw-doc-checks, 360px);
+    height: 100%;
+    min-height: 0;
+    /* 画面の外枠（縦並びの flex）の残り高さに収める。**内容の高さで伸ばさない**。
+       伸びると各ペインの overflow が効かず、右ペインの space-between が間延びする。 */
+    flex: 1 1 0;
+}
+
+.rw-doc__versions,
+.rw-doc__checks {
+    background: var(--rw-panel);
+    padding: var(--rw-space-4);
+    font-size: var(--rw-size-panel);
+    color: var(--rw-text-sub);
+    overflow: auto;
+}
+
+.rw-doc__checks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--rw-space-4);
+}
+
+.rw-doc__body {
+    padding: var(--rw-space-4);
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+    overflow: auto;
+}
+
+/* 操作と、その下に置く無効理由。space-between の相手は常にこの 1 要素にする。 */
+.rw-doc__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+}
+
+.rw-doc__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+/* 主操作が押せない理由。文字色は muted（無効化表示と同じ階調）。 */
+.rw-doc__reason {
+    margin: 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+    line-height: 1.6;
+}
+
+/* 主操作が失敗した理由。押したボタンのすぐ上に出す。 */
+.rw-doc__error {
+    margin: 0;
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-danger);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.rw-diff-add {
+    background: var(--rw-accent-chip-bg);
+    border-left: 3px solid var(--rw-accent);
+    padding: var(--rw-space-1) var(--rw-space-2);
+}
+
+/* ペインの境界のつまみ。見た目は 1px の区切り線のまま、掴める幅を左右の余白で確保する
+   （ペイン側の border は置かない。線が二重になるため）。 */
+.rw-doc__resizer {
+    width: var(--rw-border-width);
+    cursor: col-resize;
+    background: var(--rw-border);
+    /* 区切り線として見えるように、掴める幅の中央だけを塗る */
+    background-clip: content-box;
+    padding: 0 var(--rw-space-1);
+    box-sizing: content-box;
+}
+
+.rw-doc__resizer:hover,
+.rw-doc__resizer:focus-visible {
+    background-color: var(--rw-accent);
+    outline: none;
+}
+
+/* ドラッグ中は文字の選択とポインタの形の揺れを止める */
+.rw-doc--resizing {
+    user-select: none;
+    cursor: col-resize;
+}

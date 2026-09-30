@@ -1,0 +1,21 @@
+# ビルド成果物（配布物は GitHub Releases で配る。リポジトリには置かない）
+build/bin/
+build/dist/
+# 署名・公証つきのリリース物（make clean でも消さない置き場所）
+build/release/
+# 同梱する Codex（取得物。定義は internal/aiprovider/adapter/codex/bundle.json、取得は make codex）
+build/codex/
+# Windows ビルドが appicon.png から毎回作り直すアイコン。原本は build/icon/appicon.svg で、
+# 追跡するのは build/windows/icon.ico（build/icon/icon.manifest.json が見るのもこちら）。
+build/windows/appicon.ico
+
+# 依存・中間生成物
+frontend/node_modules/
+frontend/dist/
+
+# 検証ゲートのログ
+.gates/
+frontend/package.json.md5
+
+# go build ./tools/distcheck を app/ で実行したときの実行ファイル（配布物の検査は make から go run で呼ぶ）
+/distcheck

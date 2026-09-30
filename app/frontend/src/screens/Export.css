@@ -1,0 +1,106 @@
+/* エクスポート。画面型は一覧・管理系。 */
+.rw-export {
+    padding: var(--rw-space-4);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-export__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--rw-space-3);
+}
+
+.rw-export__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-export__subtitle {
+    margin: var(--rw-space-4) 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+}
+
+.rw-export__row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: var(--rw-space-3);
+    align-items: center;
+    padding: var(--rw-space-2) 0;
+    border-bottom: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-export__label {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-export__value {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rw-export__check {
+    display: flex;
+    gap: var(--rw-space-1);
+    align-items: center;
+    font-size: var(--rw-size-label);
+}
+
+.rw-export__input {
+    flex: 1;
+    min-width: 240px;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-export select {
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-export__hint {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-export__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-3);
+}
+
+.rw-export__list {
+    margin: 0;
+    padding-left: var(--rw-space-5);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-export__list li {
+    margin-bottom: var(--rw-space-1);
+}
+
+.rw-export__violations {
+    margin-top: var(--rw-space-4);
+    padding: var(--rw-space-3);
+    border-left: 2px solid var(--rw-warn);
+    background: var(--rw-bg);
+}
+
+.rw-export__files {
+    margin-top: var(--rw-space-4);
+    padding: var(--rw-space-3);
+    border-left: 2px solid var(--rw-accent);
+    background: var(--rw-bg);
+}

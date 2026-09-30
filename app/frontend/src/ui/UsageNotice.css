@@ -1,0 +1,10 @@
+/* トークン上限の警告・停止表示。種別の色は Banner 側が持つ。 */
+.rw-usage-notice__text {
+    margin: 0;
+}
+
+.rw-usage-notice__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-2);
+}

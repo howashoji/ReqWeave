@@ -1,0 +1,8 @@
+package projectstore
+
+import (
+	"github.com/go-git/go-git/v5"
+)
+
+// git のライブラリを同期モジュール以外で使う違反。
+var _ = git.PlainOpen

@@ -1,0 +1,184 @@
+# メタモデル定義（章観点ごとの必須項目と、その充足の判定条件）。
+#
+# アプリ組み込みの静的データ（Go embed）。アプリ再ビルドなしの外部更新はしない
+# （外部から書き換えられると判定が版ごとに再現できなくなるため）。章観点の並び順は、質問生成で未充足の論点を探す走査順。
+#
+# condition.kind の意味（いずれも AI に頼らず機械的に判定できる条件）:
+#   decision             論点キー "<章観点ID>/<必須項目ID>" を持つ決定事項が min 件以上
+#   requirement          当該章観点の要件項目が min 件以上（requirement_kind で種別を絞る）
+#   requirement_criteria 当該章観点の要件項目が min 件以上あり、その全件が受け入れ条件を持つ
+#                        （件数の判定元は要件項目の acceptance_criteria）
+#   term                 用語集の登録が min 件以上
+phases:
+  - id: requirements
+    chapters:
+      - id: background
+        name: 業務背景
+        id_group: BACK
+        items:
+          - id: current-state
+            name: 現状業務の記述
+            condition: {kind: decision, min: 1}
+          - id: purpose
+            name: 導入目的の決定
+            condition: {kind: decision, min: 1}
+
+      - id: scope
+        name: スコープ
+        id_group: SCOPE
+        items:
+          - id: in-scope
+            name: スコープ内機能一覧
+            condition: {kind: decision, min: 1}
+          - id: out-of-scope
+            name: スコープ外の明記
+            condition: {kind: decision, min: 1}
+
+      - id: users
+        name: 利用者
+        id_group: USER
+        items:
+          - id: roles
+            name: 利用者区分（2 件以上）
+            condition: {kind: decision, min: 2}
+          - id: permissions
+            name: 区分ごとの権限記述
+            condition: {kind: decision, min: 1}
+
+      - id: business-flow
+        name: 業務フロー
+        id_group: FLOW
+        items:
+          - id: main-flow
+            name: 主要業務フロー（As-Is または To-Be）
+            condition: {kind: decision, min: 1}
+
+      - id: use-cases
+        name: ユースケース
+        id_group: UCASE
+        items:
+          - id: list
+            name: ユースケース 1 件以上
+            condition: {kind: decision, min: 1}
+          - id: flow-and-postcondition
+            name: 各 UC の基本フローと事後条件
+            condition: {kind: decision, min: 1}
+
+      - id: functional-requirements
+        name: 機能要件
+        id_group: FUNC
+        items:
+          - id: list
+            name: 機能要件 1 件以上
+            condition: {kind: requirement, min: 1, requirement_kind: functional}
+          - id: acceptance-criteria
+            name: 各機能要件に受け入れ条件
+            condition: {kind: requirement_criteria, min: 1, requirement_kind: functional}
+
+      - id: non-functional-requirements
+        name: 非機能要件
+        id_group: QUAL
+        items:
+          # 性能・セキュリティ・信頼性の各観点。要件項目の章観点は共通のため、
+          # 観点の区別は論点キー（non-functional-requirements/<観点>）を持つ決定事項で判定する。
+          - id: performance
+            name: 性能の観点
+            condition: {kind: decision, min: 1}
+          - id: security
+            name: セキュリティの観点
+            condition: {kind: decision, min: 1}
+          - id: reliability
+            name: 信頼性の観点
+            condition: {kind: decision, min: 1}
+
+      - id: domain-model
+        name: ドメインモデル
+        id_group: DOMAIN
+        items:
+          - id: concepts
+            name: 概念（3 件以上）
+            condition: {kind: term, min: 3}
+          - id: relations
+            name: 概念間の関係
+            condition: {kind: decision, min: 1}
+
+      - id: data-requirements
+        name: データ要件
+        id_group: DATA
+        items:
+          - id: persistent-data
+            name: 永続化対象データ一覧
+            condition: {kind: decision, min: 1}
+          - id: retention
+            name: 保持期間・削除方針の決定
+            condition: {kind: decision, min: 1}
+
+      - id: external-interfaces
+        name: 外部IF
+        id_group: EXTIF
+        items:
+          - id: endpoints
+            name: 外部接続先の列挙（0 件なら「なし」の決定）
+            condition: {kind: decision, min: 1}
+
+      - id: constraints
+        name: 制約
+        id_group: CONST
+        items:
+          - id: constraints
+            name: 技術・運用制約の決定（0 件なら「なし」の決定）
+            condition: {kind: decision, min: 1}
+
+      - id: risks-assumptions
+        name: 前提・リスク
+        id_group: RISK
+        items:
+          - id: assumptions
+            name: 前提
+            condition: {kind: decision, min: 1}
+          - id: risks
+            name: リスク
+            condition: {kind: decision, min: 1}
+
+  # 基本設計フェーズ（基本設計テンプレートの 8 文書を章観点とし、
+  # 必須項目は「当該文書に割当てられた設計上の決定 1 件以上」と「根拠要件 ID の参照」）。
+  - id: basic-design
+    chapters:
+      - id: architecture
+        name: 全体アーキテクチャ
+        id_group: ARCH
+        items: &design-items
+          - id: decisions
+            name: 設計上の決定 1 件以上
+            condition: {kind: decision, min: 1}
+          - id: traced-requirements
+            name: 根拠要件 ID の参照
+            condition: {kind: decision, min: 1}
+      - id: ui-design
+        name: 画面一覧・画面遷移
+        id_group: UI
+        items: *design-items
+      - id: function-design
+        name: 業務機能・業務ロジック設計
+        id_group: LOGIC
+        items: *design-items
+      - id: data-design
+        name: データ設計
+        id_group: DATA
+        items: *design-items
+      - id: external-interface-design
+        name: 外部接続設計
+        id_group: EXTIF
+        items: *design-items
+      - id: report-design
+        name: 帳票・出力設計
+        id_group: REPORT
+        items: *design-items
+      - id: integration-design
+        name: 他システム連携・データ受け渡し設計
+        id_group: LINK
+        items: *design-items
+      - id: error-handling-security
+        name: エラー処理・セキュリティ
+        id_group: SEC
+        items: *design-items

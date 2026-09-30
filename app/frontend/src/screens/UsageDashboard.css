@@ -1,0 +1,90 @@
+/* AI 利用量ダッシュボード。画面型は一覧・管理系。 */
+.rw-usage {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+}
+
+.rw-usage__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-usage__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-usage__subtitle {
+    margin: var(--rw-space-2) 0 0;
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+}
+
+.rw-usage__actions,
+.rw-usage__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--rw-space-2);
+}
+
+.rw-usage__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-usage__field input {
+    padding: var(--rw-space-2) var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: inherit;
+    font-size: var(--rw-size-body);
+}
+
+.rw-usage__hint,
+.rw-usage__notices {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-usage__notices {
+    padding-left: var(--rw-space-5);
+}
+
+.rw-usage__detail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+}
+
+.rw-usage__figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-usage__figures dt {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-usage__figures dd {
+    margin: var(--rw-space-1) 0 0;
+    color: var(--rw-text);
+    font-size: var(--rw-size-body);
+}

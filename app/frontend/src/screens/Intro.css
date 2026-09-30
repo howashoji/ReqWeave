@@ -1,0 +1,32 @@
+/* 紹介スライド。ウィザード型の本文領域。
+   配色は共通のトークンに従い、画面固有の色を新たに定義しない。 */
+.rw-intro {
+    /* **本文と図で許す幅を変える**。
+       本文は 1 行を読み切れる桁数（68ch）に収める（判読性を優先する）が、
+       **図まで同じ幅に縛ると横長の flowchart が縮小され、文字が読めなくなる**
+       （mermaid の SVG は width="100%" のため、容器が狭いと縮む）。
+       外枠は図が使える上限、本文の各ブロックは下で 68ch に絞る。 */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* 本文の各ブロック（段落・箇条書き・表・見出し）は読み切れる桁幅に収める。 */
+.rw-intro .rw-markdown > div > * {
+    max-width: 68ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rw-intro .rw-markdown__notice {
+    max-width: 68ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 図だけは本文の桁幅に縛らず、上の 1100px まで使う。
+   それでも収まらないときだけ横スクロールさせる（縮めて潰さない）。 */
+.rw-intro .rw-markdown > div > .rw-markdown__mermaid {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: var(--rw-space-4) auto;
+}

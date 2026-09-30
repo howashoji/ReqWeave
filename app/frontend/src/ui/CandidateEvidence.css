@@ -1,0 +1,9 @@
+/* 根拠を特定できなかった候補の説明。何が問題で次に何をするかを文で言う。 */
+.rw-candidate-evidence {
+    margin: 0 0 var(--rw-space-2);
+    padding: var(--rw-space-1) var(--rw-space-2);
+    border-left: 2px solid var(--rw-warn);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+}

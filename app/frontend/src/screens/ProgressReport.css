@@ -1,0 +1,61 @@
+/* 進捗レポート。画面型は一覧・管理系。 */
+.rw-report {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+}
+
+.rw-report__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-report__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-report__actions,
+.rw-report__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--rw-space-2);
+}
+
+.rw-report__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-report__field input {
+    padding: var(--rw-space-2) var(--rw-space-2);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: inherit;
+    font-size: var(--rw-size-body);
+}
+
+.rw-report__hint,
+.rw-report__meta {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-report__preview {
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+    max-height: 60vh;
+    overflow: auto;
+}

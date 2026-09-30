@@ -1,0 +1,77 @@
+/* トークン上限設定。画面型は一覧・管理系。 */
+.rw-limit {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+}
+
+.rw-limit__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-limit__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-limit__actions,
+.rw-limit__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--rw-space-2);
+}
+
+.rw-limit__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-limit__field input {
+    padding: var(--rw-space-2) var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: inherit;
+    font-size: var(--rw-size-body);
+}
+
+.rw-limit__field input:disabled {
+    color: var(--rw-muted);
+}
+
+.rw-limit__figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-limit__figures dt {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-limit__figures dd {
+    margin: var(--rw-space-1) 0 0;
+    color: var(--rw-text);
+    font-size: var(--rw-size-body);
+}
+
+.rw-limit__hint {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}

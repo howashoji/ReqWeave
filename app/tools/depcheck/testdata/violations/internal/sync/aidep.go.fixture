@@ -1,0 +1,9 @@
+package sync
+
+import (
+	"github.com/howashoji/ReqWeave/app/internal/aiprovider"
+)
+
+// 同期モジュールが AIプロバイダ抽象化層へ依存する違反
+// （同期は AI 呼び出しを伴わない）。
+var _ = aiprovider.ErrClassTransient

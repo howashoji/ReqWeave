@@ -1,0 +1,65 @@
+/*
+ * 抽出中のスケルトンカード。
+ * 色は既存トークンのみで組む（生の色値・新しい色を足さない）。
+ * 外形は候補カード（.rw-candidates__item）と同じ: 左 2px ボーダー + surface 地 + space-2 の内側余白。
+ */
+.rw-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    margin-bottom: var(--rw-space-3);
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-border);
+    background: var(--rw-surface);
+    /* 派手に光らせない。1400ms かけて薄く息をする程度にとどめる。 */
+    animation: rw-skeleton-pulse 1400ms ease-in-out infinite;
+}
+
+/* プレースホルダの棒。区切り線と同じ最弱の階調（非テキストのため faint を使える）。 */
+.rw-skeleton__bar {
+    height: 8px;
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-faint);
+}
+
+.rw-skeleton__bar--title {
+    width: 45%;
+}
+
+.rw-skeleton__bar--short {
+    width: 70%;
+}
+
+/* 承認 / 破棄の輪郭。押せないことが分かるよう、枠と muted の文字だけにする。 */
+.rw-skeleton__marks {
+    display: flex;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-1);
+}
+
+.rw-skeleton__ghost {
+    padding: var(--rw-space-2) var(--rw-space-4);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+    line-height: 1.6;
+}
+
+@keyframes rw-skeleton-pulse {
+    0%,
+    100% {
+        opacity: 0.35;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* 動きを減らす設定では脈動を止める（カードが見えることは損なわない）。 */
+@media (prefers-reduced-motion: reduce) {
+    .rw-skeleton {
+        animation: none;
+        opacity: 0.6;
+    }
+}

@@ -1,0 +1,18 @@
+package aiprovider
+
+import (
+	"context"
+	"net/http"
+
+	"github.com/anthropics/anthropic-sdk-go"
+)
+
+var _ = http.DefaultClient
+var _ = anthropic.ErrorObject{}
+
+type adapter interface {
+	StreamMessage(ctx context.Context, req any) error
+}
+
+// 抽象化層の内部から呼ぶのは正しい経路（送信前の同意確認はこの層に置く）。
+func send(a adapter) { _ = a.StreamMessage(context.Background(), nil) }

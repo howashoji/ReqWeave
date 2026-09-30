@@ -1,0 +1,81 @@
+/* 工程の全体像。色・余白はトークン参照のみ。
+ * **置き方（重ねる・高さの頭打ち・閉じ方）は `Overlay` が持つ**。ここは中身の見た目だけ。 */
+.rw-overview__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--rw-space-2);
+    margin-bottom: var(--rw-space-2);
+}
+
+.rw-overview__title {
+    margin: 0;
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+}
+
+.rw-overview__lead {
+    margin: 0;
+    flex: 1 1 20ch;
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}
+
+.rw-overview__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rw-overview__stage {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--rw-space-3);
+    padding: var(--rw-space-2) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+/* 現在地は左の縁で示す（塗りつぶしは主操作の緑と紛れる）。 */
+.rw-overview__stage[data-state='current'] {
+    border-left: 3px solid var(--rw-accent);
+}
+
+.rw-overview__no {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+    padding-top: var(--rw-space-1);
+}
+
+.rw-overview__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.rw-overview__name {
+    color: var(--rw-text);
+    font-size: var(--rw-size-body);
+}
+
+.rw-overview__here {
+    color: var(--rw-accent);
+    margin-left: var(--rw-space-1);
+    font-size: var(--rw-size-label);
+}
+
+.rw-overview__purpose {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-overview__screen {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}

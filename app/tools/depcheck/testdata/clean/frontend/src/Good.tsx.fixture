@@ -1,0 +1,5 @@
+import {AppInfo} from '../wailsjs/go/binding/API'
+
+export async function load() {
+    return AppInfo()
+}

@@ -1,0 +1,18 @@
+package dialogue
+
+import (
+	"context"
+	"net/http"
+
+	"github.com/anthropics/anthropic-sdk-go"
+)
+
+var _ = http.DefaultClient
+var _ = anthropic.ErrorObject{}
+
+type adapter interface {
+	StreamMessage(ctx context.Context, req any) error
+}
+
+// 送信前の同意確認を置く StreamRetrying を迂回してアダプタを直接呼ぶ違反。
+func bypass(a adapter) { _ = a.StreamMessage(context.Background(), nil) }

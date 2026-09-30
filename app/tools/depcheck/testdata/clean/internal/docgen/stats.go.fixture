@@ -1,0 +1,6 @@
+package docgen
+
+// 適合フィクスチャ: レコードからの機械組立てのみ（AI 呼び出しなし）。
+import "time"
+
+var _ = time.Now

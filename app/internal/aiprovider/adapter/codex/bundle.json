@@ -1,0 +1,37 @@
+{
+  "version": "0.135.0-alpha.1",
+  "release_tag": "rust-v0.135.0-alpha.1",
+  "source": "https://github.com/openai/codex/releases/tag/rust-v0.135.0-alpha.1",
+  "note": "同梱する Codex の版と取得元。版を上げるときは、抑止設定が効くこと・送信内容が増えていないことを新しい版で確かめてから差し替える。取得と照合は `go run ./tools/codexfetch`（make codex）。",
+  "artifacts": [
+    {
+      "goarch": "arm64",
+      "target": "aarch64-apple-darwin",
+      "asset": "codex-aarch64-apple-darwin.tar.gz",
+      "archive_sha256": "f15ada944835c97a7359e1d2fbc37b007263ac73b74072fd18532a19f5c2a824",
+      "binary": "codex-aarch64-apple-darwin",
+      "binary_sha256": "422d6412cb766b41f7110c4b7177a40601f3ca6e77b60218e1da10d6fd06f3ce"
+    },
+    {
+      "goarch": "amd64",
+      "target": "x86_64-apple-darwin",
+      "asset": "codex-x86_64-apple-darwin.tar.gz",
+      "archive_sha256": "e92ee04930370598e8ab607611da7cc29b9bc1fd1df9731dce0e94fff28f0ec2",
+      "binary": "codex-x86_64-apple-darwin",
+      "binary_sha256": "a17427bcf44014c88c7d309aa990d5a106d8b5a17f9d552bf4299aaba2979906"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "LICENSE",
+      "path": "LICENSE",
+      "sha256": "d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc"
+    },
+    {
+      "name": "NOTICE",
+      "path": "NOTICE",
+      "sha256": "9d71575ecfd9a843fc1677b0efb08053c6ba9fd686a0de1a6f5382fd3c220915"
+    }
+  ],
+  "license_note": "Codex は Apache License 2.0。同条 4 項により、配布には License の写しと NOTICE を添える（アプリ本体の Contents/Resources/codex/ に置く）。"
+}

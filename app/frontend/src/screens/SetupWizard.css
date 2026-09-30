@@ -1,0 +1,118 @@
+/* 初期設定ウィザード。画面型はウィザード・回答系。 */
+.rw-setup__lead {
+    margin: 0 0 var(--rw-space-4);
+    color: var(--rw-text-sub);
+}
+
+.rw-setup__notice {
+    margin: 0 0 var(--rw-space-4);
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-left: 3px solid var(--rw-warn);
+    background: var(--rw-surface);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-body);
+}
+
+.rw-setup__choices {
+    display: grid;
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* 認証方式の選択の見出し。 */
+.rw-setup__legend {
+    padding: 0;
+    margin-top: var(--rw-space-4);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-body);
+}
+
+.rw-setup__choice {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--rw-space-3);
+    align-items: start;
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+    cursor: pointer;
+}
+
+.rw-setup__choice[data-selected='true'] {
+    border-left: 3px solid var(--rw-accent);
+}
+
+.rw-setup__choice-label {
+    font-size: var(--rw-size-body-answer);
+}
+
+.rw-setup__choice-detail {
+    display: block;
+    margin-top: var(--rw-space-1);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-setup__field {
+    display: grid;
+    gap: var(--rw-space-2);
+    margin-bottom: var(--rw-space-4);
+}
+
+.rw-setup__label {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-setup__input {
+    padding: var(--rw-space-2) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-body-answer);
+}
+
+.rw-setup__input--mono {
+    font-family: var(--rw-font-mono);
+}
+
+.rw-setup__hint {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-setup__result {
+    margin: var(--rw-space-3) 0 0;
+    padding: var(--rw-space-3) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+    font-size: var(--rw-size-body);
+}
+
+.rw-setup__result[data-tone='accent'] {
+    border-left: 3px solid var(--rw-accent);
+}
+
+.rw-setup__result[data-tone='danger'] {
+    border-left: 3px solid var(--rw-danger);
+}
+
+.rw-setup__result[data-tone='warn'] {
+    border-left: 3px solid var(--rw-warn);
+}
+
+.rw-setup__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-3);
+}
+
+.rw-setup__meta {
+    color: var(--rw-muted);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+}

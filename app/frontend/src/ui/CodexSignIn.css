@@ -1,0 +1,69 @@
+/* ChatGPT のアカウントでのサインイン。パネル・バナー系。 */
+.rw-signin {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-signin__state {
+    margin: 0;
+}
+
+.rw-signin__lead {
+    margin: 0;
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+}
+
+.rw-signin__hint {
+    margin: 0;
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}
+
+.rw-signin__notice {
+    margin: 0;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-left: 3px solid var(--rw-info);
+    background: var(--rw-bg);
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+}
+
+.rw-signin__notice[data-tone='warn'] {
+    border-left-color: var(--rw-warn);
+}
+
+.rw-signin__notice[data-tone='danger'] {
+    border-left-color: var(--rw-danger);
+}
+
+.rw-signin__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+/* アカウントの情報（成功時）。狭い幅でも折り返して横へはみ出さない。 */
+.rw-signin__figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-3);
+    margin: 0;
+}
+
+.rw-signin__figures dt {
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}
+
+.rw-signin__figures dd {
+    margin: 0;
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+    overflow-wrap: anywhere;
+}

@@ -1,0 +1,104 @@
+/* 同期先の設定。画面型は一覧・管理系。 */
+.rw-remote {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+}
+
+.rw-remote__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-remote__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-remote__hint,
+.rw-remote__meta {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-remote__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-remote__choice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--rw-space-2);
+}
+
+.rw-remote__choice > span {
+    display: flex;
+    flex-direction: column;
+}
+
+.rw-remote__input {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-remote__input input {
+    padding: var(--rw-space-2) var(--rw-space-2);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-body);
+}
+
+.rw-remote__consent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-border);
+    border-left: 3px solid var(--rw-warn);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-surface);
+}
+
+.rw-remote__consent-text {
+    margin: 0;
+    color: var(--rw-warn);
+    font-size: var(--rw-size-label);
+}
+
+.rw-remote__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-remote__detail {
+    margin: var(--rw-space-2) 0 0;
+    padding: var(--rw-space-2);
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-bg);
+    color: var(--rw-text-sub);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-label);
+    white-space: pre-wrap;
+    word-break: break-word;
+}

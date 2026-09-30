@@ -1,0 +1,58 @@
+/* 変更要約。パネル・バナー系。 */
+.rw-summary {
+    margin: var(--rw-space-3) 0;
+    padding: var(--rw-space-3);
+    border: 1px solid var(--rw-border);
+    border-radius: var(--rw-radius-md);
+    background: var(--rw-panel);
+}
+
+.rw-summary__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--rw-space-2);
+}
+
+.rw-summary__title {
+    margin: 0;
+    font-size: var(--rw-size-body);
+}
+
+.rw-summary__meta,
+.rw-summary__counts {
+    margin: var(--rw-space-1) 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-summary__count {
+    margin-right: var(--rw-space-2);
+}
+
+.rw-summary__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 40vh;
+    overflow: auto;
+}
+
+.rw-summary__items li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-1) 0;
+    border-bottom: 1px solid var(--rw-border);
+}
+
+.rw-summary__kind {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-summary__body {
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+}

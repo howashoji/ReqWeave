@@ -1,0 +1,89 @@
+/* 成果物ドキュメントの表示。文書・承認系。 */
+.rw-markdown {
+    font-size: var(--rw-size-body);
+    line-height: 1.7;
+}
+
+.rw-markdown h1,
+.rw-markdown h2,
+.rw-markdown h3 {
+    margin: var(--rw-space-5) 0 var(--rw-space-2);
+    line-height: 1.4;
+}
+
+.rw-markdown h1 {
+    font-size: var(--rw-size-heading);
+}
+
+.rw-markdown h2 {
+    font-size: var(--rw-size-body);
+    padding-bottom: var(--rw-space-1);
+    border-bottom: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-markdown h3 {
+    font-size: var(--rw-size-body);
+    color: var(--rw-text-sub);
+}
+
+.rw-markdown p,
+.rw-markdown li {
+    margin: var(--rw-space-2) 0;
+}
+
+.rw-markdown ul,
+.rw-markdown ol {
+    padding-left: var(--rw-space-5);
+}
+
+.rw-markdown code {
+    padding: var(--rw-space-1) var(--rw-space-1);
+    background: var(--rw-bg);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-markdown pre {
+    overflow-x: auto;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+}
+
+.rw-markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--rw-size-panel);
+}
+
+.rw-markdown th,
+.rw-markdown td {
+    padding: var(--rw-space-2) var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    text-align: left;
+}
+
+.rw-markdown th {
+    background: var(--rw-bg-sub);
+    color: var(--rw-text-sub);
+}
+
+.rw-markdown__mermaid {
+    overflow-x: auto;
+    margin: var(--rw-space-3) 0;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+}
+
+.rw-markdown__mermaid--raw {
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+    white-space: pre-wrap;
+}
+
+.rw-markdown__notice {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-warn);
+    font-size: var(--rw-size-label);
+}

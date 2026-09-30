@@ -1,0 +1,375 @@
+/* 対話画面。画面型は対話系: 対話ペインの側面に抽出候補パネルを同居させる。 */
+.rw-dialogue {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    /*
+     * 画面本体（rw-shell__main）の高さに収め、左右それぞれのペインの中でスクロールする。
+     * 高さが無いと右ペイン（候補）の長さでページ全体が縦に送られ、右の反映ボタンまで送ったときに
+     * 左の対話ペインが画面外へ出て空白になる（0.1.2 で利用者のスクリーンショットにより判明。
+     * 文書・承認系の 3 ペインで先に直したのと同じ規則）。
+     */
+    grid-template-rows: minmax(0, 1fr);
+    height: 100%;
+    min-height: 0;
+    gap: var(--rw-space-4);
+    align-items: stretch;
+}
+
+@media (max-width: 900px) {
+    .rw-dialogue {
+        grid-template-columns: minmax(0, 1fr);
+        /* 1 列に積むときはページ全体で送る（ペインごとに区切ると両方が細切れになる）。 */
+        grid-template-rows: none;
+        height: auto;
+    }
+}
+
+.rw-dialogue__main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-3);
+    min-width: 0;
+    min-height: 0;
+}
+
+.rw-dialogue__state {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+/* 履歴は独立してスクロールする（応答待ちでも閲覧をブロックしない） */
+.rw-dialogue__stream {
+    /* 残りの高さを履歴が取り、履歴の中でスクロールする。回答欄は常に左ペインの下端に見える。 */
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-dialogue__waiting {
+    margin: var(--rw-space-2) 0 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-dialogue__composer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+}
+
+.rw-dialogue__label {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-dialogue__input {
+    width: 100%;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-body);
+    resize: vertical;
+}
+
+.rw-dialogue__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+}
+
+.rw-dialogue__side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-4);
+    min-width: 0;
+    /* 候補・完成度はこのペインの中でスクロールする（ページ全体を送らない）。 */
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* 1 列に積むとき（上の .rw-dialogue の media と対）。基底規則より後に置いて上書きする。 */
+@media (max-width: 900px) {
+    .rw-dialogue__side {
+        overflow-y: visible;
+    }
+
+    .rw-dialogue__stream {
+        flex: none;
+        max-height: 52vh;
+    }
+}
+
+/* 抽出候補パネル。候補と根拠を同時に視認でき、画面遷移なしで承認できる。 */
+.rw-candidates,
+.rw-completeness {
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-panel);
+}
+
+.rw-candidates__title,
+.rw-completeness__title {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+}
+
+.rw-candidates__group {
+    margin: var(--rw-space-3) 0 var(--rw-space-2);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+/* 抽出中の 1 文。読み上げにも状況を 1 か所で伝える。 */
+.rw-candidates__extracting {
+    margin: 0 0 var(--rw-space-3);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+}
+
+.rw-candidates__none,
+.rw-candidates__notice {
+    margin: 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-candidates__item {
+    margin-bottom: var(--rw-space-3);
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-info);
+    background: var(--rw-surface);
+}
+
+.rw-candidates__meta,
+.rw-candidates__evidence {
+    margin: 0 0 var(--rw-space-1);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-candidates__body-text {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-panel);
+}
+
+/* 候補の本文は既定で「読むだけ」の表示（入力欄のままだと枠とスクロールで読みにくい）。全文が折り返して見える。 */
+.rw-candidates__body-read {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-text);
+    font-size: var(--rw-size-panel);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.rw-candidates__body {
+    width: 100%;
+    /* 候補の本文をスクロールせずに読める高さ（60px = 約 2.5 行では見切れていた） */
+    min-height: 8em;
+    line-height: 1.7;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-panel);
+    resize: vertical;
+}
+
+/*
+ * ID グループなどの 1 行入力。
+ *
+ * `1fr` トラックの最小値は `auto` であり、`<input>` の固有最小幅（既定 20 文字ぶん）より
+ * 小さくならない。右ペインは 160px まで狭められる（利用者がペインの幅を変えられる）ため、そのままだと
+ * ラベル 80px と合わせて容器をはみ出す。**入力欄を縮められる形**にする。
+ */
+.rw-candidates__field {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: var(--rw-space-2);
+    align-items: center;
+    margin: var(--rw-space-2) 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-candidates__field input {
+    /* 固有最小幅を打ち消して、割り当てられた幅に収める */
+    min-width: 0;
+    width: 100%;
+    padding: var(--rw-space-1) var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-panel);
+}
+
+/* 「ID グループ」が何か・何を入れればよいかを入力欄のそばで言う。 */
+.rw-candidates__hint {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-meta);
+    line-height: 1.6;
+}
+
+/* 反映を押せない理由。ホバーを待たずボタンのそばに出す（押せない理由をツールチップだけに隠さない）。 */
+.rw-candidates__reason {
+    margin: var(--rw-space-3) 0 0;
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+    line-height: 1.6;
+}
+
+/* 何が反映されるかを押す前に言う。 */
+.rw-candidates__chosen {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-candidates__marks {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+}
+
+.rw-candidates__mark-state {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-candidates__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-3);
+}
+
+/*
+ * 反映に失敗した理由。押したボタンのすぐ上に出す。
+ * 中央ペイン上端のバナーは、右ペインを下へスクロールして押した利用者から見えない。
+ */
+.rw-candidates__error {
+    margin: var(--rw-space-3) 0 0;
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-danger);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+    white-space: pre-line;
+}
+.rw-candidates__raw {
+    max-height: 240px;
+    overflow: auto;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text-sub);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+    white-space: pre-wrap;
+}
+
+/* 完成度表示。3 状態は左ボーダーの色と文字ラベルを併用する（色だけで区別しない）。 */
+.rw-completeness__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rw-completeness__row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: var(--rw-space-2);
+    align-items: center;
+    padding: var(--rw-space-1) 0 var(--rw-space-1) var(--rw-space-2);
+    border-left: 2px solid var(--rw-faint);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-completeness__row[data-state='with-open-issues'] {
+    border-left-color: var(--rw-warn);
+}
+
+.rw-completeness__row[data-state='settled'] {
+    border-left-color: var(--rw-accent);
+}
+
+.rw-completeness__percent {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-completeness__state {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-completeness__confirm {
+    margin: var(--rw-space-2) 0 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+/*
+ * 抽出中の沈み込み（抽出が終わるまで候補パネルを操作できないことを見た目で伝える）。
+ *
+ * **マスクはしない**。送信直後は自分が書いた内容を読み返す場面が多く、隠すと不安になる。
+ * 判読できる濃さ（0.55）まで落として「いまは触れない」ことだけを伝える。
+ */
+.rw-dialogue__main[data-phase='sending'] .rw-dialogue__stream,
+.rw-dialogue__main[data-phase='extracting'] .rw-dialogue__stream {
+    opacity: 0.55;
+}
+
+.rw-dialogue__stream {
+    transition: opacity 180ms ease-out;
+}
+
+/* 進行中であることの手掛かり。長さは示さない（所要が読めないため往復させる）。 */
+.rw-dialogue__progress {
+    height: 2px;
+    margin-bottom: var(--rw-space-2);
+    background: var(--rw-border);
+    overflow: hidden;
+    position: relative;
+}
+
+.rw-dialogue__progress::after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    width: 30%;
+    background: var(--rw-accent);
+    animation: rw-progress-slide 1200ms ease-in-out infinite;
+}
+
+@keyframes rw-progress-slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(400%);
+    }
+}
+
+/* 動きを減らす設定では、動かさずに「進行中」であることだけを残す。 */
+@media (prefers-reduced-motion: reduce) {
+    .rw-dialogue__stream {
+        transition: none;
+    }
+
+    .rw-dialogue__progress::after {
+        animation: none;
+        width: 100%;
+        opacity: 0.5;
+    }
+}

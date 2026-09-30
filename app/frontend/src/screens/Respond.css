@@ -1,0 +1,134 @@
+/* 回答モード。画面型はウィザード・回答系。
+   本文は 15px 基準（回答者は非エンジニアを想定し、読みやすさを優先する）。統制表示は出さない。 */
+.rw-respond {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--rw-space-5) var(--rw-space-5);
+    font-size: var(--rw-size-body-answer);
+    color: var(--rw-text);
+}
+
+.rw-respond__title {
+    margin: 0 0 var(--rw-space-3);
+    font-size: var(--rw-size-heading);
+}
+
+.rw-respond__lead {
+    margin: 0 0 var(--rw-space-4);
+}
+
+.rw-respond__file {
+    margin: 0 0 var(--rw-space-4);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+    word-break: break-all;
+}
+
+.rw-respond__field {
+    display: block;
+    margin-bottom: var(--rw-space-4);
+}
+
+.rw-respond__field input,
+.rw-respond__field textarea {
+    display: block;
+    width: 100%;
+    margin-top: var(--rw-space-2);
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: inherit;
+    font-size: var(--rw-size-body-answer);
+}
+
+.rw-respond__field textarea {
+    min-height: 88px;
+    resize: vertical;
+}
+
+.rw-respond__error {
+    margin: var(--rw-space-3) 0;
+    padding: var(--rw-space-2) var(--rw-space-3);
+    border-left: 2px solid var(--rw-danger);
+    background: var(--rw-danger-chip-bg);
+    color: var(--rw-text);
+}
+
+.rw-respond__notice {
+    margin: 0 0 var(--rw-space-4);
+    padding: var(--rw-space-2) var(--rw-space-3);
+    border-left: 2px solid var(--rw-info);
+    background: var(--rw-info-chip-bg);
+    color: var(--rw-text);
+}
+
+.rw-respond__question {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-heading);
+}
+
+.rw-respond__background {
+    margin: 0 0 var(--rw-space-3);
+    color: var(--rw-text-sub);
+}
+
+.rw-respond__hint {
+    margin: 0 0 var(--rw-space-3);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-respond__fieldset {
+    margin: 0 0 var(--rw-space-4);
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-faint);
+}
+
+.rw-respond__fieldset legend {
+    padding: 0 var(--rw-space-1);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-respond__choice,
+.rw-respond__unknown {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+    margin-bottom: var(--rw-space-2);
+}
+
+.rw-respond__review {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rw-respond__review-item {
+    margin-bottom: var(--rw-space-4);
+    padding: var(--rw-space-3);
+    border-left: 2px solid var(--rw-faint);
+}
+
+.rw-respond__answer {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-text-sub);
+}
+
+/* AI との相談の入口（回答欄の下に置く従属の操作。主役は回答欄のまま）。 */
+.rw-respond__ai-toggle {
+    margin: var(--rw-space-3) 0 0;
+}
+
+/* 返送画面のサインアウトの導線（サインイン方式のときだけ出す）。 */
+.rw-respond__signout {
+    margin-top: var(--rw-space-5);
+    padding-top: var(--rw-space-3);
+    border-top: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-respond__subtitle {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-panel);
+}

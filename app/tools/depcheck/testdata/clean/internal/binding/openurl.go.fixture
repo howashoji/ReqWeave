@@ -1,0 +1,12 @@
+package binding
+
+import (
+	"context"
+
+	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
+)
+
+// 認可の URL を既定のブラウザで開いてよいのは公開バインディング層。
+func openAuthorizationPage(ctx context.Context, url string) {
+	wailsruntime.BrowserOpenURL(ctx, url)
+}

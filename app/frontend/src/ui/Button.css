@@ -1,0 +1,36 @@
+/* 操作ボタン。影は使わず、境界線は 1px。 */
+.rw-button {
+    font-family: inherit;
+    font-size: var(--rw-size-label);
+    line-height: 1.6;
+    padding: var(--rw-space-2) var(--rw-space-4);
+    border-radius: var(--rw-radius-sm);
+    border: var(--rw-border-width) solid transparent;
+    background: transparent;
+    color: var(--rw-text);
+    cursor: pointer;
+}
+
+.rw-button--primary {
+    background: var(--rw-accent);
+    border-color: var(--rw-accent);
+    color: var(--rw-on-accent);
+}
+
+.rw-button--secondary {
+    border-color: var(--rw-border);
+    color: var(--rw-text);
+}
+
+.rw-button--quiet {
+    color: var(--rw-text-sub);
+    padding-inline: var(--rw-space-1);
+}
+
+.rw-button:disabled {
+    /* 無効化は文字を muted・枠を border に落とす（押せないことが見て分かり、文字は読める濃さを保つ） */
+    color: var(--rw-muted);
+    border-color: var(--rw-border);
+    background: transparent;
+    cursor: not-allowed;
+}

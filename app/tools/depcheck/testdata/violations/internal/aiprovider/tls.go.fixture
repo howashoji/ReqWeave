@@ -1,0 +1,6 @@
+package aiprovider
+
+import "crypto/tls"
+
+// 証明書検証の無効化は禁止（通信先のなりすましを防ぐため）
+var badTLS = &tls.Config{InsecureSkipVerify: true}

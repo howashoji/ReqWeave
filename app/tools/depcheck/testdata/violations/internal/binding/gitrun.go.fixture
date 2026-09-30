@@ -1,0 +1,25 @@
+package binding
+
+import (
+	"context"
+	"os/exec"
+)
+
+// 同期モジュール以外から git を起動する違反。
+// git の概念が上位層へ漏れ、同期先への直接アクセス経路ができる。
+func pull(ctx context.Context, dir string) error {
+	exe, err := exec.LookPath("git")
+	if err != nil {
+		return err
+	}
+	cmd := exec.CommandContext(ctx, exe, "pull")
+	cmd.Dir = dir
+	return cmd.Run()
+}
+
+// 絶対パス指定でも同じ（実行ファイル名が字面で現れる）。
+func status(dir string) error {
+	cmd := exec.Command("/usr/bin/git", "status")
+	cmd.Dir = dir
+	return cmd.Run()
+}

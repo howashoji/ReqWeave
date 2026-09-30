@@ -1,0 +1,173 @@
+/* プロジェクト一覧。画面型は一覧・管理系。 */
+.rw-projects__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+    /* 一覧やパネルに接しないよう上下に余白を置く（実機で「詰まって見える」と指摘があった） */
+    margin: var(--rw-space-4) 0;
+}
+
+.rw-projects__panel {
+    margin-bottom: var(--rw-space-4);
+    padding: var(--rw-space-4);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-projects__panel-title {
+    margin: 0 0 var(--rw-space-3);
+    font-size: var(--rw-size-body);
+}
+
+.rw-projects__field {
+    display: grid;
+    gap: var(--rw-space-2);
+    margin-bottom: var(--rw-space-3);
+}
+
+.rw-projects__label {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-projects__input {
+    padding: var(--rw-space-2) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-body);
+}
+
+.rw-projects__path {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+}
+
+.rw-projects__path-value {
+    color: var(--rw-muted);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+    overflow-wrap: anywhere;
+}
+
+.rw-projects__presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.rw-projects__preset {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+    padding: var(--rw-space-2) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    font-size: var(--rw-size-label);
+}
+
+.rw-projects__message {
+    margin: var(--rw-space-3) 0 0;
+    padding: var(--rw-space-3) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-left: 3px solid var(--rw-danger);
+    background: var(--rw-bg);
+    font-size: var(--rw-size-body);
+}
+
+.rw-projects__notice {
+    color: var(--rw-warn);
+    font-size: var(--rw-size-label);
+}
+
+.rw-projects__meta {
+    color: var(--rw-muted);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+}
+
+/* 同期の状態と外部 Git サーバの同意文。 */
+.rw-projects__sync {
+    display: block;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+.rw-projects__consent {
+    margin: 0 0 var(--rw-space-1);
+    color: var(--rw-warn);
+    font-size: var(--rw-size-label);
+}
+
+/* `.reqweave` への移行の案内。色・余白はトークン参照のみ。 */
+.rw-projects__migrate {
+    margin: var(--rw-space-4) 0;
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-panel);
+}
+
+.rw-projects__migrate-title {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+}
+
+.rw-projects__migrate-list {
+    margin: var(--rw-space-2) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rw-projects__migrate-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-2) 0;
+}
+
+.rw-projects__migrate-list li + li {
+    border-top: var(--rw-border-width) solid var(--rw-border);
+}
+
+.rw-projects__migrate-name {
+    color: var(--rw-text);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-projects__migrate-to {
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+}
+
+/* 補助の説明（作成されるフォルダ名の予告など）。 */
+.rw-projects__hint {
+    display: block;
+    margin-top: var(--rw-space-1);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+}
+
+/* 置き場所の注意。止める表示ではないので danger を使わない。 */
+.rw-projects__warning {
+    margin: var(--rw-space-2) 0 0;
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-warn);
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+}
+
+/* 対象システム名の変更。移行の案内と同じ見え方に揃える。 */
+.rw-projects__rename {
+    margin: var(--rw-space-4) 0;
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-panel);
+}

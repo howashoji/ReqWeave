@@ -1,0 +1,46 @@
+/* パネル・バナー系。種別は左ボーダー色で示す。影は使わない。 */
+.rw-banner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--rw-space-4);
+    padding: var(--rw-space-3) var(--rw-space-3);
+    background: var(--rw-surface);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-left-width: 3px;
+    border-radius: var(--rw-radius-sm);
+}
+
+.rw-banner--info {
+    border-left-color: var(--rw-info);
+}
+
+.rw-banner--warn {
+    border-left-color: var(--rw-warn);
+}
+
+.rw-banner--danger {
+    border-left-color: var(--rw-danger);
+}
+
+.rw-banner--accent {
+    border-left-color: var(--rw-accent);
+}
+
+.rw-banner__title {
+    margin: 0;
+    font-size: var(--rw-size-panel);
+    color: var(--rw-text);
+}
+
+.rw-banner__detail {
+    margin-top: var(--rw-space-1);
+    font-size: var(--rw-size-panel);
+    color: var(--rw-text-sub);
+}
+
+.rw-banner__actions {
+    display: flex;
+    gap: var(--rw-space-1);
+    flex-shrink: 0;
+}

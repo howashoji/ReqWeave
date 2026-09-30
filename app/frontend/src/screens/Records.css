@@ -1,0 +1,227 @@
+/* 決定・未決一覧／要件項目／対話履歴。画面型は一覧・管理系。 */
+.rw-records {
+    padding: var(--rw-space-4);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-records__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--rw-space-3);
+}
+
+.rw-records__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-records__section {
+    margin: var(--rw-space-4) 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+}
+
+.rw-records__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rw-records__list--compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-records__item {
+    margin-bottom: var(--rw-space-3);
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-faint);
+    background: var(--rw-bg);
+}
+
+.rw-records__item[data-overdue='true'] {
+    border-left-color: var(--rw-danger);
+}
+
+.rw-records__meta,
+.rw-records__blocking,
+.rw-records__history {
+    margin: 0 0 var(--rw-space-1);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-records__body {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-records__evidence {
+    margin: 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+/* 参照欠落・想定外の種別のお知らせ（空状態ではない = EmptyState の対象外）。 */
+.rw-records__notice {
+    margin: 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-records__error {
+    margin: 0 0 var(--rw-space-2);
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-danger);
+    background: var(--rw-danger-chip-bg);
+    font-size: var(--rw-size-label);
+}
+
+.rw-records__message {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-accent);
+    font-size: var(--rw-size-label);
+}
+
+.rw-records__evidence-panel {
+    margin: var(--rw-space-3) 0;
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-info);
+    background: var(--rw-bg);
+}
+
+.rw-records__context {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-panel);
+}
+
+/* 根拠の補足情報（原本の場所・回答者・回答日時）。本文より一段控えめに置く。
+   色は --rw-muted（--rw-faint は文字に使うとコントラストが足りないので非テキスト専用）。 */
+.rw-records__evidence-meta {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-panel);
+    color: var(--rw-muted);
+}
+
+.rw-records__detail {
+    margin-top: var(--rw-space-4);
+    padding: var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-panel);
+}
+
+.rw-records__field {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--rw-space-2);
+    align-items: center;
+    margin-bottom: var(--rw-space-2);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-records__field input,
+.rw-records__field textarea,
+.rw-records__field select {
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-body);
+}
+
+.rw-records__field textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.rw-records__criteria {
+    margin: 0 0 var(--rw-space-2) var(--rw-space-5);
+    padding: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-records__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+    align-items: center;
+}
+
+.rw-records__filters {
+    display: flex;
+    gap: var(--rw-space-4);
+    margin-bottom: var(--rw-space-3);
+}
+
+.rw-records__utterances {
+    max-height: 40vh;
+    overflow-y: auto;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+}
+
+.rw-records__utterance {
+    margin: 0 0 var(--rw-space-3);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-records__utterance-body {
+    display: block;
+    margin-top: var(--rw-space-1);
+    white-space: pre-wrap;
+}
+
+/* 変更影響表示。呼び出し元の文脈を保つパネル。 */
+.rw-records__impact {
+    margin: var(--rw-space-3) 0;
+    padding: var(--rw-space-3);
+    border-left: 2px solid var(--rw-info);
+    background: var(--rw-bg);
+}
+
+.rw-records__list--compact-block {
+    display: block;
+    font-size: var(--rw-size-panel);
+}
+
+.rw-records__list--compact-block li {
+    margin-bottom: var(--rw-space-2);
+}
+
+/* 対話履歴の全文検索。 */
+.rw-records__field--search input {
+    /* input の固有幅で右ペインがはみ出さないようにする（基底スタイルと同方針）。 */
+    min-width: 0;
+}
+
+.rw-records__search {
+    margin-bottom: var(--rw-space-3);
+    padding: var(--rw-space-3);
+    border-left: 2px solid var(--rw-info);
+    background: var(--rw-bg);
+}
+
+.rw-records__search-summary {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-panel);
+}
+
+.rw-records__excerpt {
+    display: block;
+    margin-top: var(--rw-space-1);
+    font-size: var(--rw-size-panel);
+    color: var(--rw-text-sub);
+    word-break: break-word;
+}
+
+/* 検索結果から移動してきた発話（現在位置の目印）。 */
+.rw-records__utterance[data-focused='true'] {
+    outline: 2px solid var(--rw-info);
+    outline-offset: 2px;
+}

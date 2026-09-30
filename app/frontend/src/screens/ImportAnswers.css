@@ -1,0 +1,174 @@
+/* 回答取込。画面型は文書・承認系。色はトークン参照のみ・影なし。 */
+.rw-import {
+    padding: var(--rw-space-4);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-import__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--rw-space-3);
+}
+
+.rw-import__title {
+    margin: 0;
+    font-size: var(--rw-size-heading);
+}
+
+.rw-import__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+    margin-top: var(--rw-space-3);
+}
+
+.rw-import__head .rw-import__actions {
+    margin-top: 0;
+}
+
+.rw-import__hint {
+    margin: var(--rw-space-2) 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-import__summary {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--rw-space-1) var(--rw-space-3);
+    margin: 0 0 var(--rw-space-3);
+}
+
+.rw-import__summary dt {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-import__summary dd {
+    margin: 0;
+}
+
+.rw-import__section,
+.rw-import__diff {
+    margin-top: var(--rw-space-4);
+    padding-top: var(--rw-space-3);
+    border-top: var(--rw-border-width) solid var(--rw-faint);
+}
+
+.rw-import__section-title {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+}
+
+.rw-import__group {
+    margin: var(--rw-space-4) 0 var(--rw-space-2);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-import__warning {
+    margin: var(--rw-space-3) 0;
+    padding: var(--rw-space-3);
+    border-left: 2px solid var(--rw-warn);
+    background: var(--rw-warn-chip-bg);
+}
+
+.rw-import__notice {
+    margin: 0 0 var(--rw-space-2);
+    font-size: var(--rw-size-body);
+}
+
+/* 反映に失敗した理由。「承認した内容を反映する」のすぐ上に出す。 */
+.rw-import__error {
+    margin: var(--rw-space-3) 0 0;
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-danger);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.rw-import__match,
+.rw-import__candidate,
+.rw-import__contradiction {
+    margin-bottom: var(--rw-space-3);
+    padding: var(--rw-space-2);
+    border-left: 2px solid var(--rw-faint);
+}
+
+.rw-import__label {
+    margin: 0 0 var(--rw-space-1);
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-import__question {
+    margin: 0 0 var(--rw-space-1);
+}
+
+.rw-import__answer {
+    margin: 0;
+    color: var(--rw-text-sub);
+}
+
+.rw-import__compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--rw-space-3);
+}
+
+.rw-import__pre {
+    margin: 0;
+    padding: var(--rw-space-2);
+    max-height: 200px;
+    overflow: auto;
+    border: var(--rw-border-width) solid var(--rw-faint);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+    white-space: pre-wrap;
+}
+
+.rw-import__body {
+    display: block;
+    width: 100%;
+    min-height: 72px;
+    padding: var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: inherit;
+    font-size: var(--rw-size-body);
+    resize: vertical;
+}
+
+.rw-import__confirm {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+    margin-top: var(--rw-space-2);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-import__marks {
+    display: flex;
+    gap: var(--rw-space-2);
+    align-items: center;
+    margin-top: var(--rw-space-2);
+}
+
+.rw-import__mark-state {
+    color: var(--rw-muted);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-import__result {
+    margin: 0;
+    padding-left: var(--rw-space-5);
+    font-size: var(--rw-size-meta);
+}

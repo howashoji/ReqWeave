@@ -1,0 +1,17 @@
+package sync
+
+import (
+	"context"
+	"os/exec"
+)
+
+// 同期モジュールは git を起動してよい（唯一の許可先）。
+func run(ctx context.Context, dir string, args ...string) error {
+	exe, err := exec.LookPath("git")
+	if err != nil {
+		return err
+	}
+	cmd := exec.CommandContext(ctx, exe, args...)
+	cmd.Dir = dir
+	return cmd.Run()
+}

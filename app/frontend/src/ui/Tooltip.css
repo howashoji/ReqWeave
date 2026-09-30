@@ -1,0 +1,36 @@
+/* ツールチップ。1px 枠・影なし・角丸は既存トークン。配色も既存トークンのみ。 */
+.rw-tooltip {
+    position: relative;
+    display: inline-flex;
+}
+
+.rw-tooltip__bubble {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    /* 本文より前・トースト（20）より後ろ。操作の結果表示を覆わない */
+    z-index: 10;
+    width: max-content;
+    max-width: 280px;
+    padding: var(--rw-space-1) var(--rw-space-2);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    background: var(--rw-surface);
+    color: var(--rw-text);
+    font-size: var(--rw-size-label);
+    line-height: 1.5;
+    text-align: left;
+    /* 吹き出し自体はポインタを奪わない（重なった操作を妨げない） */
+    pointer-events: none;
+}
+
+/* 画面右端からはみ出すときだけ右揃えへ倒す（Tooltip.tsx が測って付ける） */
+.rw-tooltip__bubble--end {
+    left: auto;
+    right: 0;
+}
+
+/* 無効化されたボタンはポインタ事象を発しないため、包む要素で受け取る（無効化の理由を読ませる） */
+.rw-tooltip .rw-button:disabled {
+    pointer-events: none;
+}

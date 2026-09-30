@@ -1,0 +1,10 @@
+.DS_Store
+
+# MkDocs のビルド出力（compose の docs サービスはメモリ上でビルドするため通常は生成されない）
+site/
+
+# Python バイトコードキャッシュ
+__pycache__/
+
+# Node の依存とテストランナのキャッシュ（app/node_modules・app/frontend/node_modules）
+node_modules/

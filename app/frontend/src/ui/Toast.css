@@ -1,0 +1,39 @@
+/* 一過性の操作フィードバック（パネル・バナー系）。影は使わない。 */
+.rw-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: var(--rw-space-4);
+    max-width: min(640px, calc(100vw - 32px));
+    padding: var(--rw-space-3) var(--rw-space-3);
+    background: var(--rw-surface);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-left-width: 3px;
+    border-radius: var(--rw-radius-sm);
+}
+
+.rw-toast--info {
+    border-left-color: var(--rw-info);
+}
+
+.rw-toast--warn {
+    border-left-color: var(--rw-warn);
+}
+
+.rw-toast--danger {
+    border-left-color: var(--rw-danger);
+}
+
+.rw-toast--accent {
+    border-left-color: var(--rw-accent);
+}
+
+.rw-toast__message {
+    margin: 0;
+    font-size: var(--rw-size-panel);
+    color: var(--rw-text);
+}

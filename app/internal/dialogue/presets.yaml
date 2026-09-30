@@ -1,0 +1,120 @@
+# ドメインプリセット観点の定義（業務領域ごとに、追加で尋ねる質問観点）。
+#
+# アプリ組み込みの静的データ（Go embed）。外部から動的に取得しない
+# （実行時に外部から観点を取り込まないため。メタモデル定義 metamodel.yaml と同方針）。
+#
+# 各観点は次を持つ:
+#   id       観点ID（論点キー preset/<領域ID>/<観点ID> に使う。英語識別子）
+#   name     観点の名称（画面・プロンプトに出す表記）
+#   chapter  関連章観点ID（metamodel.yaml の章観点。走査時にこの章の必須項目リストへ連結する）
+#   topics   典型論点の要旨（質問文は AI が生成する。固定文言は持たせない）
+#
+# 観点の追加・細分化はアプリの版更新で行い、一度発番した観点 ID は再利用しない。
+domains:
+  - id: sales
+    name: 販売
+    summary: 受注・価格と承認・与信・請求と入金・出荷と売上計上・返品
+    perspectives:
+      - id: order-channel
+        name: 受注チャネルと受注形態
+        chapter: business-flow
+        topics: EDI・Web・電話など受注経路ごとの受付方法と、単発／継続などの受注形態の違い
+      - id: pricing-approval
+        name: 価格・値引きとその承認
+        chapter: functional-requirements
+        topics: 価格の決め方（定価・得意先別・数量別）と値引きの承認者・承認限度
+      - id: credit-control
+        name: 与信管理
+        chapter: functional-requirements
+        topics: 与信限度額の設定・チェックのタイミング・超過時の扱い
+      - id: billing-settlement
+        name: 請求・入金消込
+        chapter: business-flow
+        topics: 締め日と請求書の発行単位、入金の消込方法と差額の扱い
+      - id: shipping-revenue
+        name: 出荷・納品と売上計上基準
+        chapter: business-flow
+        topics: 出荷指示から納品までの流れと、売上をどの時点で計上するか
+      - id: returns-cancel
+        name: 返品・キャンセル処理
+        chapter: functional-requirements
+        topics: 返品・キャンセルの受付条件、在庫と売上への戻し方
+
+  - id: inventory
+    name: 在庫
+    summary: 管理単位・入出庫と引当・棚卸と差異・倉庫とロケーション・発注点
+    perspectives:
+      - id: stock-unit
+        name: 在庫管理単位
+        chapter: data-requirements
+        topics: 品目・ロット・シリアルのどの単位で在庫を持つか、単位ごとの追跡範囲
+      - id: receipt-issue-allocation
+        name: 入出庫と引当のルール
+        chapter: business-flow
+        topics: 入出庫の記録タイミングと、引当を行う時点・引当の解除条件
+      - id: stocktaking
+        name: 棚卸と差異処理
+        chapter: business-flow
+        topics: 実地棚卸・循環棚卸の実施単位と頻度、差異が出たときの承認・記録
+      - id: warehouse-location
+        name: 倉庫・ロケーション管理
+        chapter: data-requirements
+        topics: 倉庫とロケーションの階層、ロケーション単位の在庫を持つか
+      - id: reorder-point
+        name: 発注点・安全在庫
+        chapter: functional-requirements
+        topics: 発注点と安全在庫の決め方、補充の起票を自動化するか
+
+  - id: accounting
+    name: 経理
+    summary: 勘定科目と仕訳・締め処理・消費税と端数・債権債務・会計システム連携
+    perspectives:
+      - id: account-journal
+        name: 勘定科目と仕訳の発生点
+        chapter: functional-requirements
+        topics: どの業務イベントで仕訳を起こすか、勘定科目の対応づけ
+      - id: period-closing
+        name: 月次・年次の締め処理
+        chapter: business-flow
+        topics: 締めの単位・締め後の訂正の扱い・締め処理の担当
+      - id: tax-rounding
+        name: 消費税・端数処理の規則
+        chapter: functional-requirements
+        topics: 税率の適用単位（明細・伝票）と端数処理の丸め方
+      - id: receivable-payable
+        name: 債権・債務管理
+        chapter: functional-requirements
+        topics: 債権・債務の残高管理の単位、滞留の把握方法
+      - id: accounting-integration
+        name: 既存会計システムとの連携範囲
+        chapter: external-interfaces
+        topics: 連携するデータと方向・連携の頻度・連携失敗時の扱い
+
+  - id: workflow
+    name: ワークフロー
+    summary: 承認経路・代理承認・差し戻し・権限と職務分掌・申請書式・監査証跡
+    perspectives:
+      - id: approval-route
+        name: 承認経路
+        chapter: business-flow
+        topics: 金額・組織による承認経路の分岐と、経路の決め方
+      - id: delegation
+        name: 代理承認・不在時の扱い
+        chapter: business-flow
+        topics: 代理承認者の設定方法と、不在時に承認が滞らないための扱い
+      - id: reject-withdraw
+        name: 差し戻し・取り下げ
+        chapter: business-flow
+        topics: 差し戻し先（前段・申請者）と取り下げの可否・条件
+      - id: authority-segregation
+        name: 権限と職務分掌
+        chapter: users
+        topics: 申請・承認・実行の権限分離と、兼務を認める範囲
+      - id: form-attachment
+        name: 申請書式と添付
+        chapter: functional-requirements
+        topics: 申請ごとの入力項目と、添付ファイルの要否・種類
+      - id: audit-trail
+        name: 監査証跡の要否
+        chapter: non-functional-requirements
+        topics: 誰が・いつ・何を承認したかの記録範囲と保持期間

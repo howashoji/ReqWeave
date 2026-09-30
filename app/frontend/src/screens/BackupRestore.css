@@ -1,0 +1,52 @@
+/* バックアップ・復元。画面型は一覧・管理系。 */
+.rw-backup__section {
+    margin-bottom: var(--rw-space-5);
+    padding: var(--rw-space-4);
+    border: var(--rw-border-width) solid var(--rw-border);
+    background: var(--rw-surface);
+}
+
+.rw-backup__title {
+    margin: 0 0 var(--rw-space-3);
+    font-size: var(--rw-size-body);
+}
+
+.rw-backup__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-3);
+}
+
+.rw-backup__hint {
+    margin: var(--rw-space-1) 0 0;
+    color: var(--rw-muted);
+    font-size: var(--rw-size-label);
+}
+
+.rw-backup__meta {
+    color: var(--rw-muted);
+    font-family: var(--rw-font-mono);
+    font-size: var(--rw-size-meta);
+}
+
+.rw-backup__message {
+    margin: var(--rw-space-3) 0 0;
+    padding: var(--rw-space-3) var(--rw-space-3);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-left: 3px solid var(--rw-info);
+    background: var(--rw-bg);
+    font-size: var(--rw-size-body);
+}
+
+.rw-backup__message[data-tone='danger'] {
+    border-left-color: var(--rw-danger);
+}
+
+.rw-backup__message[data-tone='accent'] {
+    border-left-color: var(--rw-accent);
+}
+
+.rw-backup__message[data-tone='warn'] {
+    border-left-color: var(--rw-warn);
+}

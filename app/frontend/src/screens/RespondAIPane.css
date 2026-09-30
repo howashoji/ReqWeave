@@ -1,0 +1,133 @@
+/* 回答モードの AI 対話ペイン（回答画面の下部に置く）。 */
+.rw-respond-ai {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    padding: var(--rw-space-3) var(--rw-space-5);
+    gap: var(--rw-space-2);
+    box-sizing: border-box;
+}
+
+.rw-respond-ai__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--rw-space-3);
+}
+
+.rw-respond-ai__title {
+    margin: 0;
+    font-size: var(--rw-size-panel);
+}
+
+.rw-respond-ai__subtitle {
+    margin: 0;
+    font-size: var(--rw-size-label);
+}
+
+/* 履歴はペインの中だけでスクロールする（ページ全体を伸ばさない）。 */
+.rw-respond-ai__history,
+.rw-respond-ai__setup {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+}
+
+.rw-respond-ai__setup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+}
+
+.rw-respond-ai__turn {
+    margin-bottom: var(--rw-space-2);
+}
+
+.rw-respond-ai__apply {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+    padding-left: var(--rw-space-3);
+}
+
+.rw-respond-ai__compose {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-2);
+}
+
+.rw-respond-ai__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rw-space-1);
+    font-size: var(--rw-size-label);
+    color: var(--rw-text-sub);
+    min-width: 0;
+}
+
+.rw-respond-ai__field textarea,
+.rw-respond-ai__field input,
+.rw-respond-ai__field select {
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    font: inherit;
+    font-size: var(--rw-size-body);
+    color: var(--rw-text);
+    background: var(--rw-surface);
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    padding: var(--rw-space-2);
+}
+
+.rw-respond-ai__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rw-space-2);
+}
+
+.rw-respond-ai__fieldset {
+    margin: 0;
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    padding: var(--rw-space-2);
+}
+
+.rw-respond-ai__choice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-1) 0;
+}
+
+.rw-respond-ai__scope {
+    border: var(--rw-border-width) solid var(--rw-border);
+    border-radius: var(--rw-radius-sm);
+    padding: var(--rw-space-2) var(--rw-space-3);
+    background: var(--rw-surface);
+}
+
+.rw-respond-ai__scope ul {
+    margin: 0 0 var(--rw-space-2);
+    padding-left: var(--rw-space-4);
+}
+
+.rw-respond-ai__scope-label {
+    margin: var(--rw-space-2) 0 var(--rw-space-1);
+    font-size: var(--rw-size-label);
+    color: var(--rw-text-sub);
+}
+
+.rw-respond-ai__hint {
+    margin: 0;
+    font-size: var(--rw-size-label);
+    color: var(--rw-muted);
+}
+
+.rw-respond-ai__error {
+    margin: 0;
+    font-size: var(--rw-size-label);
+    color: var(--rw-danger);
+}

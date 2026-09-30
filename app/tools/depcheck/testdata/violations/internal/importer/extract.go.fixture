@@ -1,0 +1,5 @@
+package importer
+
+import "net/http"
+
+var _ = http.DefaultClient

@@ -1,0 +1,22 @@
+/* 空状態。色・余白はトークン参照のみ。 */
+.rw-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--rw-space-2);
+    padding: var(--rw-space-3) 0;
+}
+
+.rw-empty__message {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-panel);
+}
+
+/* 次の一手。読み飛ばされないよう本文と同じ階調にする（muted へ落とさない）。 */
+.rw-empty__detail {
+    margin: 0;
+    color: var(--rw-text-sub);
+    font-size: var(--rw-size-label);
+    line-height: 1.7;
+}

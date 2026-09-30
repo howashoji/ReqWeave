@@ -1,0 +1,16 @@
+/* 更新通知。種別の色は Banner 側が持つ。 */
+.rw-update__detail {
+    margin: 0 0 var(--rw-space-2);
+    color: var(--rw-muted);
+    line-height: 1.7;
+}
+
+.rw-update__detail:last-child {
+    margin-bottom: 0;
+}
+
+.rw-update__actions {
+    display: flex;
+    gap: var(--rw-space-2);
+    margin-top: var(--rw-space-3);
+}

@@ -1,0 +1,14 @@
+package applog
+
+import (
+	"os"
+	"path/filepath"
+
+	"github.com/howashoji/ReqWeave/app/internal/projectstore"
+)
+
+// ログ出力層は動作ログの保存先を参照してよい（動作ログの唯一の書き手）。
+func open(paths projectstore.AppPaths) (*os.File, error) {
+	return os.OpenFile(filepath.Join(paths.LogsDir(), "app.log"),
+		os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o600)
+}

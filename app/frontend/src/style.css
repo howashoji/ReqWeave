@@ -1,0 +1,53 @@
+/* 全画面共通の基底スタイル。配色・タイポグラフィの値は styles/tokens.css が正本。 */
+@import './styles/tokens.css';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+}
+
+/*
+ * hidden で隠した要素は必ず消す。
+ *
+ * `hidden` 属性の非表示はブラウザ標準スタイル側の指定によるもので、
+ * **作成者スタイルの display（例: .rw-dialogue の grid）が常に勝つ**。実際に、対話画面が
+ * hidden でも表示され続け、別の画面と二重に見えていた。ここで基底として打ち消す。
+ */
+[hidden] {
+    display: none !important;
+}
+
+body {
+    background: var(--rw-bg);
+    color: var(--rw-text);
+    font-family: var(--rw-font-sans);
+    font-size: var(--rw-size-body);
+    line-height: 1.7;
+    /* ドロップシャドウは使わない（区切りは 1px の線で示す） */
+}
+
+/* 識別子・数値・状態ラベルのみモノスペース（本文には使わない） */
+.rw-mono {
+    font-family: var(--rw-font-mono);
+    font-feature-settings: 'tnum' 1;
+}
+
+/*
+ * 入力欄は**置いた場所より広がらない**。
+ *
+ * `input` は既定で 20 文字ぶんの固有幅（`size` 属性）を持ち、grid / flex の最小値は `auto` のため、
+ * **狭いペインでは枠からはみ出す**。実機で ID グループの入力欄が右ペインから出て発覚した。
+ * 画面ごとに幅を書いて回るのではなく、基底で頭打ちにする。
+ */
+input,
+select,
+textarea {
+    max-width: 100%;
+    min-width: 0;
+}
