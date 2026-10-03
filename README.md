@@ -1,4 +1,4 @@
-# ReqWeave（レクウィーブ）
+# <img src="app/build/appicon.png" alt="" width="48" align="top"> ReqWeave（レクウィーブ）
 
 AI と対話しながら要件定義書と基本設計書をつくるデスクトップアプリです。
 macOS と Windows 11 で動きます。
